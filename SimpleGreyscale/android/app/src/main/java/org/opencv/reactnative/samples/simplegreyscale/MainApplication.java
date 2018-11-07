@@ -1,9 +1,9 @@
-package com.simplegreyscale;
+package org.opencv.reactnative.samples.simplegreyscale;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import org.opencvport.RNOpencv3Package;
+import org.opencv.reactnative.RNOpencv3Package;
 import com.rnfs.RNFSPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
