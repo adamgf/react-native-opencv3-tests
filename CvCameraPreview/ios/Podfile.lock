@@ -46,8 +46,6 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNFS (2.12.1):
-    - React
   - RNOpencv3/CvCamera (1.0.0):
     - OpenCV
     - React
@@ -68,7 +66,6 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
-  - RNFS (from `../node_modules/react-native-fs`)
   - RNOpencv3/CvCamera (from `../node_modules/react-native-opencv3/ios/RNOpencv3.podspec`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -86,8 +83,6 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
-  RNFS:
-    :path: "../node_modules/react-native-fs"
   RNOpencv3:
     :path: "../node_modules/react-native-opencv3/ios/RNOpencv3.podspec"
   yoga:
@@ -100,10 +95,9 @@ SPEC CHECKSUMS:
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   OpenCV: 452909747854c92e0f59670961ed5131f5286cb5
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
   RNOpencv3: 5f568f137965142a980cb0941756bdde8a379252
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 1cd815573e4bc6543c8efa0d475f76c884e8d194
+PODFILE CHECKSUM: 709874e6d1b9618bb22028290d673915fc1fb7ec
 
 COCOAPODS: 1.5.3
