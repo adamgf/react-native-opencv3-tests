@@ -9,7 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import RNOpencv3 from 'react-native-opencv3';
+import {RNOpencv3} from 'react-native-opencv3';
 
 export default class App extends Component {
 
