@@ -1,4 +1,4 @@
-package com.cvcamerapreview;
+package org.opencv.reactnative.samples.cvcamerapreview;
 
 import android.app.Application;
 
