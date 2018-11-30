@@ -9,7 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import {RNOpencv3} from 'react-native-opencv3';
+import {RNCv} from 'react-native-opencv3';
 
 export default class App extends Component {
 
@@ -24,7 +24,7 @@ export default class App extends Component {
     this.downloadAssetSource(require('./images/girl_wide_brim_hat.png'))
     .then((sourceFile) => {
 
-      RNOpencv3.cvtColorGray(sourceFile, destFile)
+      RNCv.cvtColorGray(sourceFile, destFile)
       .then((image) => {
         const { width, height, uri } = image
         if (uri && uri.length > 0) {
