@@ -3,6 +3,7 @@ package org.opencv.reactnative.samples.cvfacedetection;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.projectseptember.RNGL.RNGLPackage;
 import org.opencv.reactnative.RNOpencv3Package;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -24,6 +25,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RNGLPackage(),
             new RNOpencv3Package()
       );
     }
