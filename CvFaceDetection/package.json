@@ -7,9 +7,6 @@
     "test": "jest"
   },
   "dependencies": {
-    "gl-react": "^2.3.1",
-    "gl-react-hue-rotate": "^2.0.3",
-    "gl-react-native": "^2.57.0",
     "react": "16.6.1",
     "react-native": "0.57.7",
     "react-native-image": "^0.1.1",
