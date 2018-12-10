@@ -22,7 +22,8 @@ export default class App extends Component<Props> {
           <CvInvoke func='cv:rotate' params='90.0,CCW'>
           <CvCamera
             style={styles.preview}
-            facing='back'
+            facing='front'
+            cascadeClassifier='lbpcascade_frontalface'
           />
         </CvInvoke>
       </CvInvoke>
