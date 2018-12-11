@@ -9,32 +9,73 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, View, DeviceEventEmitter} from 'react-native';
 import {CvCamera, CvInvoke} from 'react-native-opencv3';
 
-type Props = {};
-export default class App extends Component<Props> {
+export default class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { faces : '' }
+  }
+
+  componentDidMount = () => {
+    DeviceEventEmitter.addListener('onFacesDetected', this.onFacesDetected.bind(this));
+  }
+
+   onFacesDetected(e) {
+    this.setState({ faces : e.payload })
+  }
+
+  renderFaceBoxes() {
+    if (this.state.faces) {
+      const facesJSON = JSON.parse(this.state.faces)
+
+      // face co-ordinates are in floating point as percentage of view
+      let views = facesJSON.faces.map((face, i) => {
+        let box = {
+            position: 'absolute',
+            top: `${100.0*face.y}%`,
+            left: `${100.0*face.x}%`,
+            width: '100%',
+            height: '100%'
+        }
+        let style = {
+            width: `${100.0*face.width}%`,
+            height: `${100.0*face.height}%`,
+            borderWidth: 3,
+            borderColor: '#0f0'
+        }
+        return <View key={face.faceId} style={box}><View style={style}></View></View>
+      })
+      return <View style={styles.allFaceBoxes}>{views}</View>
+    }
+  }
+
   render() {
     return (
-      <View style={styles.preview} >
-        <CvInvoke func='cv:cvtColor' params='GRAYSCALE'>
-          <CvInvoke func='cv:flip' params='HORIZONTAL'>
-          <CvInvoke func='cv:rotate' params='90.0,CCW'>
-          <CvCamera
-            style={styles.preview}
-            facing='front'
-            cascadeClassifier='lbpcascade_frontalface'
-          />
-        </CvInvoke>
-      </CvInvoke>
-    </CvInvoke>
+      <View style={styles.preview}>
+        <CvCamera
+          style={styles.preview}
+          facing='back'
+          cascadeClassifier='lbpcascade_frontalface'
+        />
+        {this.renderFaceBoxes()}
       </View>
-    );
+    )
   }
 }
 
 const styles = StyleSheet.create({
+  allFaceBoxes: {
+    backgroundColor: 'transparent',
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%'
+  },
   preview: {
+    backgroundColor: 'transparent',
     flex: 1
   },
 });
