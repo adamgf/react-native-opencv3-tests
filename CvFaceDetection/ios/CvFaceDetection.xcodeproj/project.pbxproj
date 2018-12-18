@@ -37,9 +37,10 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* CvFaceDetectionTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CvFaceDetectionTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		7673D4DD088543F29C2263AD /* libRNOpencv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7255490082C048BAA7291F71 /* libRNOpencv3.a */; };
+		800A03E741B740E4B12D121C /* ocvdata.bundle in Frameworks */ = {isa = PBXBuildFile; fileRef = CD63536ED6144E178B574398 /* ocvdata.bundle */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		B0EE2DA816294FE18EE4BF86 /* libRNOpencv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F09463DE6B08486AA717A342 /* libRNOpencv3.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -281,9 +282,9 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
-		506E7D4521BF736A004768AD /* PBXContainerItemProxy */ = {
+		50B7C8EC21C7436100A43F6B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = E70DC98231004D25B0746CD8 /* RNOpencv3.xcodeproj */;
+			containerPortal = 85BD33FAAACB461D95D695C4 /* RNOpencv3.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNOpencv3;
@@ -353,11 +354,12 @@
 		32C0B5221DED7419448A2A0F /* Pods-CvFaceDetection.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvFaceDetection.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CvFaceDetection/Pods-CvFaceDetection.debug.xcconfig"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		609D8A17DCF184DB0ED550A9 /* Pods_CvFaceDetection.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CvFaceDetection.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7255490082C048BAA7291F71 /* libRNOpencv3.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOpencv3.a; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		85BD33FAAACB461D95D695C4 /* RNOpencv3.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOpencv3.xcodeproj; path = "../node_modules/react-native-opencv3/ios/RNOpencv3.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		E70DC98231004D25B0746CD8 /* RNOpencv3.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOpencv3.xcodeproj; path = "../node_modules/react-native-opencv3/ios/RNOpencv3.xcodeproj"; sourceTree = "<group>"; };
-		F09463DE6B08486AA717A342 /* libRNOpencv3.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOpencv3.a; sourceTree = "<group>"; };
+		CD63536ED6144E178B574398 /* ocvdata.bundle */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.plug-in"; path = ocvdata.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -385,8 +387,9 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				B0EE2DA816294FE18EE4BF86 /* libRNOpencv3.a in Frameworks */,
 				0D0927F343E5CBFB5BA40882 /* Pods_CvFaceDetection.framework in Frameworks */,
+				7673D4DD088543F29C2263AD /* libRNOpencv3.a in Frameworks */,
+				800A03E741B740E4B12D121C /* ocvdata.bundle in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -544,16 +547,17 @@
 		506E7D1C21BF736A004768AD /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				F09463DE6B08486AA717A342 /* libRNOpencv3.a */,
 				25B36800B0B84B169CCEB44B /* libRNGL.a */,
+				7255490082C048BAA7291F71 /* libRNOpencv3.a */,
+				CD63536ED6144E178B574398 /* ocvdata.bundle */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
-		506E7D4221BF736A004768AD /* Products */ = {
+		50B7C8E821C7436100A43F6B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				506E7D4621BF736A004768AD /* libRNOpencv3.a */,
+				50B7C8ED21C7436100A43F6B /* libRNOpencv3.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -591,7 +595,7 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				E70DC98231004D25B0746CD8 /* RNOpencv3.xcodeproj */,
+				85BD33FAAACB461D95D695C4 /* RNOpencv3.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -681,6 +685,7 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				B92A9B86635BDF7B45D65D01 /* [CP] Embed Pods Frameworks */,
+				1823EEE0ED393963DF8A0581 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -817,8 +822,8 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = 506E7D4221BF736A004768AD /* Products */;
-					ProjectRef = E70DC98231004D25B0746CD8 /* RNOpencv3.xcodeproj */;
+					ProductGroup = 50B7C8E821C7436100A43F6B /* Products */;
+					ProjectRef = 85BD33FAAACB461D95D695C4 /* RNOpencv3.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1056,11 +1061,11 @@
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		506E7D4621BF736A004768AD /* libRNOpencv3.a */ = {
+		50B7C8ED21C7436100A43F6B /* libRNOpencv3.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libRNOpencv3.a;
-			remoteRef = 506E7D4521BF736A004768AD /* PBXContainerItemProxy */;
+			remoteRef = 50B7C8EC21C7436100A43F6B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */ = {
@@ -1147,7 +1152,29 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
+		};
+		1823EEE0ED393963DF8A0581 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-CvFaceDetection/Pods-CvFaceDetection-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNOpencv3/ocvdata.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ocvdata.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvFaceDetection/Pods-CvFaceDetection-resources.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1291,8 +1318,8 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = CvFaceDetectionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1320,8 +1347,8 @@
 				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = CvFaceDetectionTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1351,8 +1378,8 @@
 				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = CvFaceDetection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1376,8 +1403,8 @@
 				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = CvFaceDetection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1407,8 +1434,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = "CvFaceDetection-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1444,8 +1471,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = "CvFaceDetection-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1479,8 +1506,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = "CvFaceDetection-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1514,8 +1541,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 					"$(SRCROOT)/../node_modules/gl-react-native/ios",
+					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
 				);
 				INFOPLIST_FILE = "CvFaceDetection-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
