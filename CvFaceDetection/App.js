@@ -9,23 +9,28 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, View, DeviceEventEmitter} from 'react-native';
+import {Platform, StyleSheet, View, DeviceEventEmitter} from 'react-native';
 import {CvCamera, CvInvoke} from 'react-native-opencv3';
 
 export default class App extends Component {
   constructor(props) {
     super(props)
     this.state = { faces : '' }
+    this.onFacesDetected.bind(this)
   }
 
   componentDidMount = () => {
-    DeviceEventEmitter.addListener('onFacesDetected', this.onFacesDetected.bind(this));
+    DeviceEventEmitter.addListener('onFacesDetected', this.onFacesDetected);
   }
 
-  onFacesDetected(e) {
-    console.log("We are in onFacesDetected bitches !!!!!!!!!!!!!!")
-    //alert(JSON.stringify(e));
-    //this.setState({ faces : e.payload })
+  onFacesDetected = (e) => {
+    //alert('payload: ' + JSON.stringify(e.nativeEvent.payload))
+    if (Platform.OS === 'ios') {
+      this.setState({ faces : e.nativeEvent.payload })
+    }
+    else {
+      this.setState({ faces : e.payload })
+    }
   }
 
   renderFaceBoxes() {
