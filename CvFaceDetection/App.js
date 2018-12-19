@@ -4,7 +4,7 @@
  *
  * @format
  * @flow
- * @author Adam Freeman --> adamgf@gmail.com
+ * @author Adam Freeman => adamgf@gmail.com
  * @description ==> face detection app for CvCamera
  */
 
@@ -22,8 +22,10 @@ export default class App extends Component {
     DeviceEventEmitter.addListener('onFacesDetected', this.onFacesDetected.bind(this));
   }
 
-   onFacesDetected(e) {
-    this.setState({ faces : e.payload })
+  onFacesDetected(e) {
+    console.log("We are in onFacesDetected bitches !!!!!!!!!!!!!!")
+    //alert(JSON.stringify(e));
+    //this.setState({ faces : e.payload })
   }
 
   renderFaceBoxes() {
@@ -58,6 +60,7 @@ export default class App extends Component {
           style={styles.preview}
           facing='back'
           cascadeClassifier='lbpcascade_frontalface'
+          onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
       </View>
