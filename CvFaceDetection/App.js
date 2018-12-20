@@ -26,12 +26,12 @@ export default class App extends Component {
   onFacesDetected = (e) => {
     //alert('payload: ' + JSON.stringify(e.nativeEvent.payload))
     if (Platform.OS === 'ios') {
-      if ((!e.nativeEvent.payload && this.state.faces) || (e.nativeEvent.payload && !this.state.faces)) {
+      if ((!e.nativeEvent.payload && this.state.faces) || (e.nativeEvent.payload && !this.state.faces) || (e.nativeEvent.payload && this.state.faces)) {
         this.setState({ faces : e.nativeEvent.payload })
       }
     }
     else {
-      if ((!e.payload && this.state.faces) || (e.payload && !this.state.faces)) {
+      if ((!e.payload && this.state.faces) || (e.payload && !this.state.faces) || (e.payload && this.state.faces)) {
         this.setState({ faces : e.payload })
       }
     }
