@@ -39,6 +39,7 @@ export default class App extends Component {
 
       // face co-ordinates are in floating point as percentage of view
       let views = facesJSON.faces.map((face, i) => {
+        console.log('x: ' + face.x + ' y: ' + face.y + ' w: ' + face.width + ' h: ' + face.height);
         let box = {
             position: 'absolute',
             top: `${100.0*face.y}%`,
