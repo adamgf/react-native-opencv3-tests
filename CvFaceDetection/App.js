@@ -9,18 +9,28 @@
  */
 
 import React, {Component} from 'react';
-import {Platform, StyleSheet, View, DeviceEventEmitter} from 'react-native';
+import {Platform, StyleSheet, View, DeviceEventEmitter, TouchableOpacity, Image} from 'react-native';
 import {CvCamera, CvInvoke} from 'react-native-opencv3';
 
 export default class App extends Component {
   constructor(props) {
     super(props)
-    this.state = { faces : '' }
-    this.onFacesDetected.bind(this)
+    this.state = { faces : '',
+      facing : 'back'
+    }
   }
 
   componentDidMount = () => {
     DeviceEventEmitter.addListener('onFacesDetected', this.onFacesDetected);
+  }
+
+  switchFacing = (e) => {
+    if (this.state.facing === 'back') {
+      this.setState({ facing : 'front' })
+    }
+    else {
+      this.setState({ facing : 'back' })
+    }
   }
 
   onFacesDetected = (e) => {
@@ -68,27 +78,72 @@ export default class App extends Component {
       <View style={styles.preview}>
         <CvCamera
           style={styles.preview}
-          facing='back'
+          facing={this.state.facing}
           cascadeClassifier='lbpcascade_frontalface'
           onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
+        <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.switchFacing}>
+          <Image style={Platform.OS === 'android' ? styles.androidImg : styles.iosImg} source={require('./images/flipCamera.png')}/>
+        </TouchableOpacity>
       </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
+  androidImg: {
+    transform : [{ rotate: '-90deg' }],
+    backgroundColor : 'transparent',
+    opacity : 0.75,
+    width : 50,
+    height : 50
+  },
+  iosImg: {
+    backgroundColor : 'transparent',
+    width : 50,
+    height : 50
+  },
+  androidButton: {
+    top : 0,
+    bottom : 0,
+    right : 0,
+    width: '10%',
+    position : 'absolute',
+    backgroundColor : '#FFF',
+    opacity : 0.75,
+    display : 'flex',
+    justifyContent : 'center',
+    alignItems : 'center'
+  },
+  iosButton: {
+    left : 0,
+    right : 0,
+    bottom : 0,
+    height : '10%',
+    position : 'absolute',
+    backgroundColor : '#FFF',
+    opacity : 0.75,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
   allFaceBoxes: {
-    backgroundColor: 'transparent',
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '100%'
+    backgroundColor : 'transparent',
+    position : 'absolute',
+    alignItems : 'center',
+    top : 0,
+    left : 0,
+    width : '100%',
+    height : '100%'
   },
   preview: {
-    backgroundColor: 'transparent',
-    flex: 1
+    alignItems : 'center',
+    backgroundColor : 'transparent',
+    top : 0,
+    left : 0,
+    right : 0,
+    bottom : 0,
+    position : 'absolute'
   },
 });
