@@ -34,7 +34,7 @@ export default class App extends Component {
   }
 
   onFacesDetected = (e) => {
-    //alert('payload: ' + JSON.stringify(e.nativeEvent.payload))
+    //alert('payload: ' + JSON.stringify(e.payload))
     if (Platform.OS === 'ios') {
       if ((!e.nativeEvent.payload && this.state.faces) || (e.nativeEvent.payload && !this.state.faces) || (e.nativeEvent.payload && this.state.faces)) {
         this.setState({ faces : e.nativeEvent.payload })
@@ -53,7 +53,8 @@ export default class App extends Component {
 
       // face co-ordinates are in floating point as percentage of view
       let views = facesJSON.faces.map((face, i) => {
-        console.log('x: ' + face.x + ' y: ' + face.y + ' w: ' + face.width + ' h: ' + face.height);
+        console.log('facesJON is: ' + JSON.stringify(facesJSON))
+        //console.log('x: ' + face.x + ' y: ' + face.y + ' w: ' + face.width + ' h: ' + face.height);
         let box = {
             position: 'absolute',
             top: `${100.0*face.y}%`,
@@ -67,8 +68,31 @@ export default class App extends Component {
             borderWidth: 3,
             borderColor: '#0f0'
         }
-        return <View key={face.faceId} style={box}><View style={style}></View></View>
+
+        let e1box = {}, e1style = {}
+        if (face.firstEye) {
+          e1box = {
+            position: 'absolute',
+            top: `${100.0*face.firstEye.y}%`,
+            left: `${100.0*face.firstEye.x}%`,
+            width: '100%',
+            height: '100%'
+          }
+          e1style = {
+            width: `${100.0*face.firstEye.width}%`,
+            height: `${100.0*face.firstEye.height}%`,
+            borderWidth: 2,
+            borderColor: '#ff0'
+          }
+        }
+
+        return (
+          <View key={face.faceId} style={box}><View style={style}>
+          <View style={e1box}><View style={e1style}></View></View>
+        </View></View>
+        )
       })
+
       return <View style={styles.allFaceBoxes}>{views}</View>
     }
   }
@@ -79,7 +103,8 @@ export default class App extends Component {
         <CvCamera
           style={styles.preview}
           facing={this.state.facing}
-          cascadeClassifier='lbpcascade_frontalface'
+          faceClassifier='lbpcascade_frontalface'
+          eyesClassifier='haarcascade_eye_tree_eyeglasses'
           onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
@@ -95,7 +120,6 @@ const styles = StyleSheet.create({
   androidImg: {
     transform : [{ rotate: '-90deg' }],
     backgroundColor : 'transparent',
-    opacity : 0.75,
     width : 50,
     height : 50
   },
