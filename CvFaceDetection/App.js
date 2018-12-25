@@ -86,10 +86,64 @@ export default class App extends Component {
           }
         }
 
+        let e2box = {}, e2style = {}
+        if (face.secondEye) {
+          e2box = {
+            position: 'absolute',
+            top: `${100.0*face.secondEye.y}%`,
+            left: `${100.0*face.secondEye.x}%`,
+            width: '100%',
+            height: '100%'
+          }
+          e2style = {
+            width: `${100.0*face.secondEye.width}%`,
+            height: `${100.0*face.secondEye.height}%`,
+            borderWidth: 2,
+            borderColor: '#ff0'
+          }
+        }
+
+        let nbox = {}, nstyle = {}
+        if (face.nose) {
+          nbox = {
+            position: 'absolute',
+            top: `${100.0*face.nose.y}%`,
+            left: `${100.0*face.nose.x}%`,
+            width: '100%',
+            height: '100%'
+          }
+          nstyle = {
+            width: `${100.0*face.nose.width}%`,
+            height: `${100.0*face.nose.height}%`,
+            borderWidth: 2,
+            borderColor: '#00f'
+          }
+        }
+
+        let mbox = {}, mstyle = {}
+        if (face.mouth) {
+          mbox = {
+            position: 'absolute',
+            top: `${100.0*face.mouth.y}%`,
+            left: `${100.0*face.mouth.x}%`,
+            width: '100%',
+            height: '100%'
+          }
+          mstyle = {
+            width: `${100.0*face.mouth.width}%`,
+            height: `${100.0*face.mouth.height}%`,
+            borderWidth: 2,
+            borderColor: '#f00'
+          }
+        }
+
         return (
           <View key={face.faceId} style={box}><View style={style}>
-          <View style={e1box}><View style={e1style}></View></View>
-        </View></View>
+            <View style={e1box}><View style={e1style}></View></View>
+            <View style={e2box}><View style={e2style}></View></View>
+            <View style={nbox}><View style={nstyle}></View></View>
+            <View style={mbox}><View style={mstyle}></View></View>
+          </View></View>
         )
       })
 
@@ -103,8 +157,10 @@ export default class App extends Component {
         <CvCamera
           style={styles.preview}
           facing={this.state.facing}
-          faceClassifier='lbpcascade_frontalface'
+          faceClassifier='haarcascade_frontalface_alt2'
           eyesClassifier='haarcascade_eye_tree_eyeglasses'
+          noseClassifier='nose'
+          mouthClassifier='mouth'
           onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
