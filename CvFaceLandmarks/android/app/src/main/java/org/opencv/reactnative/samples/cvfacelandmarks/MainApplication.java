@@ -1,4 +1,4 @@
-package com.cvfacelandmarks;
+package org.opencv.reactnative.samples.cvfacelandmarks;
 
 import android.app.Application;
 
