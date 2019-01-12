@@ -51,99 +51,22 @@ export default class App extends Component {
     if (this.state.faces) {
       const facesJSON = JSON.parse(this.state.faces)
 
-      // face co-ordinates are in floating point as percentage of view
-      let views = facesJSON.faces.map((face, i) => {
-        console.log('facesJON is: ' + JSON.stringify(facesJSON))
+      // landmark co-ordinates are in floating point as percentage of view
+      let views = facesJSON.features.landmarks.map((landmark, i) => {
+        //console.log('facesJON is: ' + JSON.stringify(facesJSON))
         //console.log('x: ' + face.x + ' y: ' + face.y + ' w: ' + face.width + ' h: ' + face.height);
         let box = {
             position: 'absolute',
-            top: `${100.0*face.y}%`,
-            left: `${100.0*face.x}%`,
-            width: '100%',
-            height: '100%'
-        }
-        let style = {
-            width: `${100.0*face.width}%`,
-            height: `${100.0*face.height}%`,
-            borderWidth: 3,
-            borderColor: '#0f0'
-        }
-
-        let e1box = {}, e1style = {}
-        if (face.firstEye) {
-          e1box = {
-            position: 'absolute',
-            top: `${100.0*face.firstEye.y}%`,
-            left: `${100.0*face.firstEye.x}%`,
-            width: '100%',
-            height: '100%'
-          }
-          e1style = {
-            width: `${100.0*face.firstEye.width}%`,
-            height: `${100.0*face.firstEye.height}%`,
+            top: `${100.0*landmark.y}%`,
+            left: `${100.0*landmark.x}%`,
+            width: 3,
+            height: 3,
             borderWidth: 2,
             borderColor: '#ff0'
-          }
         }
-
-        let e2box = {}, e2style = {}
-        if (face.secondEye) {
-          e2box = {
-            position: 'absolute',
-            top: `${100.0*face.secondEye.y}%`,
-            left: `${100.0*face.secondEye.x}%`,
-            width: '100%',
-            height: '100%'
-          }
-          e2style = {
-            width: `${100.0*face.secondEye.width}%`,
-            height: `${100.0*face.secondEye.height}%`,
-            borderWidth: 2,
-            borderColor: '#ff0'
-          }
-        }
-
-        let nbox = {}, nstyle = {}
-        if (face.nose) {
-          nbox = {
-            position: 'absolute',
-            top: `${100.0*face.nose.y}%`,
-            left: `${100.0*face.nose.x}%`,
-            width: '100%',
-            height: '100%'
-          }
-          nstyle = {
-            width: `${100.0*face.nose.width}%`,
-            height: `${100.0*face.nose.height}%`,
-            borderWidth: 2,
-            borderColor: '#00f'
-          }
-        }
-
-        let mbox = {}, mstyle = {}
-        if (face.mouth) {
-          mbox = {
-            position: 'absolute',
-            top: `${100.0*face.mouth.y}%`,
-            left: `${100.0*face.mouth.x}%`,
-            width: '100%',
-            height: '100%'
-          }
-          mstyle = {
-            width: `${100.0*face.mouth.width}%`,
-            height: `${100.0*face.mouth.height}%`,
-            borderWidth: 2,
-            borderColor: '#f00'
-          }
-        }
-
+        let vertexKey = 'Vertex' + i
         return (
-          <View key={face.faceId} style={box}><View style={style}>
-            <View style={e1box}><View style={e1style}></View></View>
-            <View style={e2box}><View style={e2style}></View></View>
-            <View style={nbox}><View style={nstyle}></View></View>
-            <View style={mbox}><View style={mstyle}></View></View>
-          </View></View>
+          <View key={vertexKey} style={box}/>
         )
       })
 
@@ -158,9 +81,7 @@ export default class App extends Component {
           style={styles.preview}
           facing={this.state.facing}
           faceClassifier='haarcascade_frontalface_alt2'
-          eyesClassifier='haarcascade_eye_tree_eyeglasses'
-          noseClassifier='nose'
-          mouthClassifier='mouth'
+          landmarksModel='lbfmodel'
           onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
