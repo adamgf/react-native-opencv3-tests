@@ -47,29 +47,40 @@ export default class App extends Component {
     }
   }
 
-  renderFaceBoxes() {
+  renderLandmarks() {
+
     if (this.state.faces) {
       const facesJSON = JSON.parse(this.state.faces)
 
-      // landmark co-ordinates are in floating point as percentage of view
-      let views = facesJSON.features.landmarks.map((landmark, i) => {
-        //console.log('facesJON is: ' + JSON.stringify(facesJSON))
-        //console.log('x: ' + face.x + ' y: ' + face.y + ' w: ' + face.width + ' h: ' + face.height);
-        let box = {
-            position: 'absolute',
-            top: `${100.0*landmark.y}%`,
-            left: `${100.0*landmark.x}%`,
-            width: 3,
-            height: 3,
-            borderWidth: 2,
-            borderColor: '#ff0'
-        }
-        let vertexKey = 'Vertex' + i
-        return (
-          <View key={vertexKey} style={box}/>
-        )
-      })
+      const faces = facesJSON.faces
+      var allPoints = []
 
+      for (var i = 0; i < faces.length; i++) {
+        const landmarks = faces[i].landmarks
+        for (var j = 0; j < landmarks.length; j++) {
+            const landmarkJson = landmarks[j]
+            allPoints.push(landmarkJson)
+        }
+      }
+
+      // landmark co-ordinates are in floating point as percentage of view
+      let views = allPoints.map((landmark, i) => {
+        if (landmark) {
+          let box = {
+              position: 'absolute',
+              top: `${100.0*landmark.y}%`,
+              left: `${100.0*landmark.x}%`,
+              width: 3,
+              height: 3,
+              borderWidth: 2,
+              borderColor: '#ff0'
+          }
+          let vertexKey = 'Vertex' + i
+          return (
+            <View key={vertexKey} style={box}/>
+          )
+        }
+      })
       return <View style={styles.allFaceBoxes}>{views}</View>
     }
   }
@@ -84,7 +95,7 @@ export default class App extends Component {
           landmarksModel='lbfmodel'
           onFacesDetected={this.onFacesDetected}
         />
-        {this.renderFaceBoxes()}
+        {this.renderLandmarks()}
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.switchFacing}>
           <Image style={Platform.OS === 'android' ? styles.androidImg : styles.iosImg} source={require('./images/flipCamera.png')}/>
         </TouchableOpacity>

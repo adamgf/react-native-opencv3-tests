@@ -6,6 +6,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
+  - OpenCVmin-face (3.4.5)
   - React/Core (0.57.8):
     - yoga (= 0.57.8.React)
   - React/CxxBridge (0.57.8):
@@ -43,13 +44,14 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNOpencv3/CvCamera (1.0.0)
+  - RNOpencv3/CvCamera (1.0.5)
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - OpenCVmin-face (from `../node_modules/react-native-opencv3/ios/frameworks/OpenCVmin-face/OpenCVmin-face.podspec`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/cxxreact (from `../node_modules/react-native`)
@@ -75,6 +77,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/Folly.podspec"
   glog:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
+  OpenCVmin-face:
+    :path: "../node_modules/react-native-opencv3/ios/frameworks/OpenCVmin-face/OpenCVmin-face.podspec"
   React:
     :path: "../node_modules/react-native"
   RNOpencv3:
@@ -87,10 +91,11 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
+  OpenCVmin-face: 7888a44c269fb87a08bb60166a0c8ad1824ecece
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  RNOpencv3: abae2638c1989725c677ac47d6e93ad23c262aa4
+  RNOpencv3: edce0fb47853ed42059d093c83e782020677868a
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 71832a2cc3d485bacad38c21282f4dba076cc31b
+PODFILE CHECKSUM: e5e939d7ad1f9b0ba338658b01d6aca967ada81d
 
 COCOAPODS: 1.5.3
