@@ -7,42 +7,42 @@ PODS:
     - glog
   - glog (0.3.5)
   - OpenCVmin-face (3.4.5)
-  - React (0.57.4):
-    - React/Core (= 0.57.4)
-  - React/Core (0.57.4):
-    - yoga (= 0.57.4.React)
-  - React/CxxBridge (0.57.4):
+  - React (0.57.8):
+    - React/Core (= 0.57.8)
+  - React/Core (0.57.8):
+    - yoga (= 0.57.8.React)
+  - React/CxxBridge (0.57.8):
     - Folly (= 2016.10.31.00)
     - React/Core
     - React/cxxreact
-  - React/cxxreact (0.57.4):
+  - React/cxxreact (0.57.8):
     - boost-for-react-native (= 1.63.0)
     - Folly (= 2016.10.31.00)
     - React/jschelpers
     - React/jsinspector
-  - React/DevSupport (0.57.4):
+  - React/DevSupport (0.57.8):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.57.4)
-  - React/jschelpers (0.57.4):
+  - React/fishhook (0.57.8)
+  - React/jschelpers (0.57.8):
     - Folly (= 2016.10.31.00)
     - React/PrivateDatabase
-  - React/jsinspector (0.57.4)
-  - React/PrivateDatabase (0.57.4)
-  - React/RCTActionSheet (0.57.4):
+  - React/jsinspector (0.57.8)
+  - React/PrivateDatabase (0.57.8)
+  - React/RCTActionSheet (0.57.8):
     - React/Core
-  - React/RCTAnimation (0.57.4):
+  - React/RCTAnimation (0.57.8):
     - React/Core
-  - React/RCTBlob (0.57.4):
+  - React/RCTBlob (0.57.8):
     - React/Core
-  - React/RCTImage (0.57.4):
+  - React/RCTImage (0.57.8):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.57.4):
+  - React/RCTNetwork (0.57.8):
     - React/Core
-  - React/RCTText (0.57.4):
+  - React/RCTText (0.57.8):
     - React/Core
-  - React/RCTWebSocket (0.57.4):
+  - React/RCTWebSocket (0.57.8):
     - React/Core
     - React/fishhook
     - React/RCTBlob
@@ -50,7 +50,7 @@ PODS:
     - React
   - RNOpencv3/CvCamera (1.0.5):
     - OpenCVmin-face (~> 3.4.5)
-  - yoga (0.57.4.React)
+  - yoga (0.57.8.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
