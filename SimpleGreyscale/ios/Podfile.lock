@@ -46,7 +46,7 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
-  - RNFS (2.12.1):
+  - RNFS (2.13.3):
     - React
   - RNOpencv3/CvCamera (1.0.5):
     - OpenCVmin-face (~> 3.4.5)
@@ -68,7 +68,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - RNFS (from `../node_modules/react-native-fs`)
-  - RNOpencv3/CvCamera (from `../node_modules/react-native-opencv3/ios/RNOpencv3.podspec`)
+  - RNOpencv3/CvCamera (from `../node_modules/react-native-opencv3/ios`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -88,7 +88,7 @@ EXTERNAL SOURCES:
   RNFS:
     :path: "../node_modules/react-native-fs"
   RNOpencv3:
-    :path: "../node_modules/react-native-opencv3/ios/RNOpencv3.podspec"
+    :path: "../node_modules/react-native-opencv3/ios"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -103,6 +103,6 @@ SPEC CHECKSUMS:
   RNOpencv3: 0703fc8aec22acba897eee45bfa6a319ca1e402d
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 1cd815573e4bc6543c8efa0d475f76c884e8d194
+PODFILE CHECKSUM: d14bad75bcbdca264ddc2e3081b958e97f86b07a
 
 COCOAPODS: 1.5.3

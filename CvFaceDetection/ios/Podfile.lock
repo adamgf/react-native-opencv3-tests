@@ -7,46 +7,46 @@ PODS:
     - glog
   - glog (0.3.5)
   - OpenCVmin-face (3.4.5)
-  - React/Core (0.57.7):
-    - yoga (= 0.57.7.React)
-  - React/CxxBridge (0.57.7):
+  - React/Core (0.57.8):
+    - yoga (= 0.57.8.React)
+  - React/CxxBridge (0.57.8):
     - Folly (= 2016.10.31.00)
     - React/Core
     - React/cxxreact
-  - React/cxxreact (0.57.7):
+  - React/cxxreact (0.57.8):
     - boost-for-react-native (= 1.63.0)
     - Folly (= 2016.10.31.00)
     - React/jschelpers
     - React/jsinspector
-  - React/DevSupport (0.57.7):
+  - React/DevSupport (0.57.8):
     - React/Core
     - React/RCTWebSocket
-  - React/fishhook (0.57.7)
-  - React/jschelpers (0.57.7):
+  - React/fishhook (0.57.8)
+  - React/jschelpers (0.57.8):
     - Folly (= 2016.10.31.00)
     - React/PrivateDatabase
-  - React/jsinspector (0.57.7)
-  - React/PrivateDatabase (0.57.7)
-  - React/RCTActionSheet (0.57.7):
+  - React/jsinspector (0.57.8)
+  - React/PrivateDatabase (0.57.8)
+  - React/RCTActionSheet (0.57.8):
     - React/Core
-  - React/RCTAnimation (0.57.7):
+  - React/RCTAnimation (0.57.8):
     - React/Core
-  - React/RCTBlob (0.57.7):
+  - React/RCTBlob (0.57.8):
     - React/Core
-  - React/RCTImage (0.57.7):
+  - React/RCTImage (0.57.8):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.57.7):
+  - React/RCTNetwork (0.57.8):
     - React/Core
-  - React/RCTText (0.57.7):
+  - React/RCTText (0.57.8):
     - React/Core
-  - React/RCTWebSocket (0.57.7):
+  - React/RCTWebSocket (0.57.8):
     - React/Core
     - React/fishhook
     - React/RCTBlob
   - RNOpencv3/CvCamera (1.0.5):
     - OpenCVmin-face (~> 3.4.5)
-  - yoga (0.57.7.React)
+  - yoga (0.57.8.React)
 
 DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
@@ -63,7 +63,7 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
-  - RNOpencv3/CvCamera (from `../node_modules/react-native-opencv3/ios/RNOpencv3.podspec`)
+  - RNOpencv3/CvCamera (from `../node_modules/react-native-opencv3/ios`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -81,7 +81,7 @@ EXTERNAL SOURCES:
   React:
     :path: "../node_modules/react-native"
   RNOpencv3:
-    :path: "../node_modules/react-native-opencv3/ios/RNOpencv3.podspec"
+    :path: "../node_modules/react-native-opencv3/ios"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -95,6 +95,6 @@ SPEC CHECKSUMS:
   RNOpencv3: 0703fc8aec22acba897eee45bfa6a319ca1e402d
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: c77b2a5cf25c01f8b4b721788be769cbfdf44005
+PODFILE CHECKSUM: a12a0f20186f291bd9b0a9235bbdd7b59a6ad20b
 
 COCOAPODS: 1.5.3

@@ -282,6 +282,13 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
+		5025BBEB21ED9D6B008B09BA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8829DCAB779F4918B7A2E0C0 /* RNOpencv3.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 50B7C94721C89E3F00A43F6B;
+			remoteInfo = ocvdata;
+		};
 		50EAEDCE2191795F0003418E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 93064DCA4BA740818DDC6661 /* RNFS.xcodeproj */;
@@ -595,6 +602,7 @@
 			isa = PBXGroup;
 			children = (
 				50EAEDD62191795F0003418E /* libRNOpencv3.a */,
+				5025BBEC21ED9D6B008B09BA /* ocvdata.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -773,6 +781,9 @@
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = KPVD84QZHR;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1087,6 +1098,13 @@
 			fileType = archive.ar;
 			path = libjschelpers.a;
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		5025BBEC21ED9D6B008B09BA /* ocvdata.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ocvdata.bundle;
+			remoteRef = 5025BBEB21ED9D6B008B09BA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		50EAEDCF2191795F0003418E /* libRNFS.a */ = {
@@ -1417,6 +1435,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
@@ -1441,6 +1460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-fs/**",
