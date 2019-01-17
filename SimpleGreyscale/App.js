@@ -1,6 +1,6 @@
 /**
  * Sample React Native App to test OpenCV
- * https://github.com/adamgf/react-native-opencv
+ * https://github.com/adamgf/react-native-opencv3-tests
  *
  * @format
  * @flow
@@ -25,13 +25,15 @@ export default class App extends Component {
     .then((sourceFile) => {
       let srcMat
       let dstMat
-      RNCv.createEmptyMat().then((res) => {
+      RNCv.Mat().then((res) => {
         dstMat = res
         RNCv.imageToMat(sourceFile).then((res) => {
           srcMat = res
           RNCv.cvtColor(srcMat, dstMat, ColorConv.COLOR_BGR2GRAY)
           RNCv.matToImage(dstMat, destFile)
           .then((image) => {
+            RNCv.deleteMat(srcMat)
+            RNCv.deleteMat(dstMat)
             const { width, height, uri } = image
             if (uri && uri.length > 0) {
               this.setState({ greyImageSource: uri })
@@ -45,7 +47,7 @@ export default class App extends Component {
           })
         })
       })
-     /** original meta-method OULD SKUOL!
+     /** original meta-method
       RNCv.cvtColorGray(sourceFile, destFile)
       .then((image) => {
         const { width, height, uri } = image
