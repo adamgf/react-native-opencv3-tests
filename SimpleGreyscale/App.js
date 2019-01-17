@@ -9,7 +9,7 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, Image} from 'react-native';
-import {RNCv} from 'react-native-opencv3';
+import {RNCv, ColorConv} from 'react-native-opencv3';
 
 export default class App extends Component {
 
@@ -23,7 +23,29 @@ export default class App extends Component {
     const destFile = this.RNFS.DocumentDirectoryPath + '/girl_wide_brim_hat_greyscaled.png'
     this.downloadAssetSource(require('./images/girl_wide_brim_hat.png'))
     .then((sourceFile) => {
-
+      let srcMat
+      let dstMat
+      RNCv.createEmptyMat().then((res) => {
+        dstMat = res
+        RNCv.imageToMat(sourceFile).then((res) => {
+          srcMat = res
+          RNCv.cvtColor(srcMat, dstMat, ColorConv.COLOR_BGR2GRAY)
+          RNCv.matToImage(dstMat, destFile)
+          .then((image) => {
+            const { width, height, uri } = image
+            if (uri && uri.length > 0) {
+              this.setState({ greyImageSource: uri })
+            }
+            else {
+              console.error('Error getting image information.')
+            }
+          })
+          .catch((err) => {
+            console.error(err)
+          })
+        })
+      })
+     /** original meta-method OULD SKUOL!
       RNCv.cvtColorGray(sourceFile, destFile)
       .then((image) => {
         const { width, height, uri } = image
@@ -36,7 +58,7 @@ export default class App extends Component {
       })
       .catch((err) => {
         console.error(err)
-      })
+      }) */
     })
     .catch((err) => {
       console.error(err)
