@@ -159,8 +159,8 @@ export default class App extends Component {
           facing={this.state.facing}
           faceClassifier='haarcascade_frontalface_alt2'
           eyesClassifier='haarcascade_eye_tree_eyeglasses'
-          noseClassifier='nose'
-          mouthClassifier='mouth'
+          noseClassifier='haarcascade_mcs_nose'
+          mouthClassifier='haarcascade_mcs_mouth'
           onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
