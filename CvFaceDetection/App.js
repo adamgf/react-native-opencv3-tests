@@ -160,7 +160,9 @@ export default class App extends Component {
           faceClassifier='haarcascade_frontalface_alt2'
           eyesClassifier='haarcascade_eye_tree_eyeglasses'
           noseClassifier='haarcascade_mcs_nose'
+          //noseClassifier='nose' // better performace but not as accurate
           mouthClassifier='haarcascade_mcs_mouth'
+          //mouthClassifier='mouth' // ditto
           onFacesDetected={this.onFacesDetected}
         />
         {this.renderFaceBoxes()}
