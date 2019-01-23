@@ -15,14 +15,14 @@ import {CvCamera} from 'react-native-opencv3';
 type Props = {};
 export default class App extends Component<Props> {
   render() {
-    const { type } = 'back';
+    const { facing } = 'back';
     return (
       <View
         style={styles.preview}
       >
         <CvCamera
           style={styles.preview}
-          type={type}
+          facing={facing}
         />
       </View>
     );
