@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Dimensions, TouchableOpacity, ScrollView, Image, Platform, StyleSheet, Text, View} from 'react-native';
-import {RNCv, CvCamera, CvInvoke, ColorConv, CvTypeClass, CvMat} from 'react-native-opencv3';
+import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat} from 'react-native-opencv3';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -24,14 +24,12 @@ export default class App extends Component<Props> {
     let {height, width} = Dimensions.get('window')
     this.scrollView = React.createRef();
     this.state = { scrollleft : width - 64, windowwidth : width, windowheight : height }
-    this.CvType = new CvTypeClass()
-    RNCv.MatWithParams(150, 150, this.CvType.CV_8UC(4))
-    .then((res) => {
-      this.setState({ scrollleft : width - 64, windowwidth : width, windowheight : height, intermediatemat : res })
-    })
   }
 
-  componentDidMount = () => {
+  componentDidMount = async() => {
+    let res = await Mat(150, 150, CvType.CV_8UC4)
+    //alert('resZero is: ' + JSON.stringify(res))
+    this.setState({ ...this.state, intermediatemat : res })
     setTimeout(() => {
       if (this.scrollView && this.scrollView.current) {
         this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
@@ -94,17 +92,21 @@ export default class App extends Component<Props> {
     let intermat
     if (this.state && this.state.intermediatemat) {
       intermat = this.state.intermediatemat
-
-    alert('intermat is: ' + JSON.stringify(intermat))
-  }
+    }
 
     return (
       <View style={styles.container}>
-        <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"mBuff"}} callback='onHistogram1'>
-          <CvInvoke func='RNCv.cvtColor' params={{"p1":rgba,"p2":intermat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}>
-            <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
+        <CvInvokeGroup groupid='invokeGroup1'>
+          <CvInvoke func='whateverthefuck' params={{"p1":"fuck","p2":"this shit","p3":"up"}}>
+        <CvInvokeGroup groupid='invokeGroup0'>
+          <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"payload"}} callback='onHistogram1'>
+            <CvInvoke func='RNCv.cvtColor' params={{"p1":rgba,"p2":intermat,"p3":ColorConv.COLOR_BayerRG2BGR_VNG}}>
+              <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
+            </CvInvoke>
           </CvInvoke>
-        </CvInvoke>
+        </CvInvokeGroup>
+          </CvInvoke>
+        </CvInvokeGroup>
         <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
           <TouchableOpacity  onPress={this.press1} style={styles.to}>
             <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
