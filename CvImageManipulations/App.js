@@ -97,15 +97,12 @@ export default class App extends Component<Props> {
     return (
       <View style={styles.container}>
         <CvInvokeGroup groupid='invokeGroup1'>
-          <CvInvoke func='whateverthefuck' params={{"p1":"fuck","p2":"this shit","p3":"up"}}>
-        <CvInvokeGroup groupid='invokeGroup0'>
-          <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"payload"}} callback='onHistogram1'>
-            <CvInvoke func='RNCv.cvtColor' params={{"p1":rgba,"p2":intermat,"p3":ColorConv.COLOR_BayerRG2BGR_VNG}}>
-              <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
-            </CvInvoke>
-          </CvInvoke>
-        </CvInvokeGroup>
-          </CvInvoke>
+          <CvInvoke func='whateverthefuck' params={{"p1":"fuck","p2":"this shit","p3":"up"}}/>
+          <CvInvokeGroup groupid='invokeGroup0'>
+            <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"payload"}} callback='onHistogram1'/>
+            <CvInvoke func='cvtColor' params={{"p1":rgba,"p2":intermat,"p3":ColorConv.COLOR_BayerRG2BGR_VNG}}/>
+            <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
+          </CvInvokeGroup>
         </CvInvokeGroup>
         <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
           <TouchableOpacity  onPress={this.press1} style={styles.to}>
