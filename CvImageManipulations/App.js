@@ -8,7 +8,8 @@
 
 import React, {Component} from 'react';
 import {Dimensions, TouchableOpacity, ScrollView, Image, Platform, StyleSheet, Text, View} from 'react-native';
-import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat} from 'react-native-opencv3';
+import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat,
+  MatOfInt, MatOfFloat} from 'react-native-opencv3';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -27,9 +28,15 @@ export default class App extends Component<Props> {
   }
 
   componentDidMount = async() => {
-    let res = await Mat(150, 150, CvType.CV_8UC4)
-    //alert('resZero is: ' + JSON.stringify(res))
-    this.setState({ ...this.state, intermediatemat : res })
+    let interMat = await new Mat(150,150,CvType.CV_8UC4).init()
+    let channelZero = await new MatOfInt(0).init()
+    let maskMat = await new Mat().init()
+    let histogramMat = await new Mat().init()
+    let ranges = await new MatOfFloat(0.0, 256.0).init()
+
+    this.setState({ ...this.state, interMat : interMat, channelZero : channelZero,
+      maskMat : maskMat, histogramMat : histogramMat, ranges : ranges })
+
     setTimeout(() => {
       if (this.scrollView && this.scrollView.current) {
         this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
@@ -89,20 +96,24 @@ export default class App extends Component<Props> {
 
   render() {
     const rgba='CvCameraFrame'
-    let intermat
-    if (this.state && this.state.intermediatemat) {
-      intermat = this.state.intermediatemat
+    let interMat, channelZero, maskMat, histogramMat, ranges
+    if (this.state && this.state.interMat) {
+      interMat = this.state.interMat
+      channelZero = this.state.channelZero
+      maskMat = this.state.maskMat
+      histogramMat = this.state.histogramMat
+      ranges = this.state.ranges
     }
 
     return (
       <View style={styles.container}>
         <CvInvokeGroup groupid='invokeGroup1'>
           <CvInvoke func='whateverthefuck' params={{"p1":"fuck","p2":"this shit","p3":"up"}}/>
-        <CvInvokeGroup groupid='invokeGroup0'>
-          <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"payload"}} callback='onHistogram1'/>
-          <CvInvoke func='RNCv.cvtColor' params={{"p1":rgba,"p2":intermat,"p3":ColorConv.COLOR_BayerRG2BGR_VNG}}/>
-          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
-        </CvInvokeGroup>
+          <CvInvokeGroup groupid='invokeGroup0'>
+            <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"payload"}} callback='onHistogram1'/>
+            <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_BayerRG2BGR_VNG}}/>
+            <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
+          </CvInvokeGroup>
         </CvInvokeGroup>
         <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
           <TouchableOpacity  onPress={this.press1} style={styles.to}>
