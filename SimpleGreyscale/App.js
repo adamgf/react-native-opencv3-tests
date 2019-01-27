@@ -29,7 +29,8 @@ export default class App extends Component {
         dstMat = res
         RNCv.imageToMat(sourceFile).then((res) => {
           srcMat = res
-          RNCv.cvtColor(srcMat, dstMat, ColorConv.COLOR_BGR2GRAY)
+          RNCv.invokeMethod("cvtColor", {"p1":srcMat,"p2":dstMat,"p3":ColorConv.COLOR_BGR2GRAY});
+          //RNCv.cvtColor(srcMat, dstMat, ColorConv.COLOR_BGR2GRAY)
           RNCv.matToImage(dstMat, destFile)
           .then((image) => {
             RNCv.deleteMat(srcMat)
@@ -47,20 +48,6 @@ export default class App extends Component {
           })
         })
       })
-     /** original meta-method
-      RNCv.cvtColorGray(sourceFile, destFile)
-      .then((image) => {
-        const { width, height, uri } = image
-        if (uri && uri.length > 0) {
-          this.setState({ greyImageSource: uri })
-        }
-        else {
-          console.log('Error getting image information.')
-        }
-      })
-      .catch((err) => {
-        console.error(err)
-      }) */
     })
     .catch((err) => {
       console.error(err)
@@ -119,7 +106,6 @@ export default class App extends Component {
       const prependFilename = Platform.OS === 'ios' ? '' : 'file://'
       greyImagePath = prependFilename + this.state.greyImageSource
     }
-    console.log('greyImagePath is: ' + greyImagePath)
 
     return (
       <View style={styles.container}>
