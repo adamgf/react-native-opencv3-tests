@@ -10,7 +10,6 @@ import React, {Component} from 'react';
 import {Dimensions, DeviceEventEmitter, TouchableOpacity, ScrollView, Image, Platform, StyleSheet, Text, View} from 'react-native';
 import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat, MatOfInt, MatOfFloat} from 'react-native-opencv3';
 
-let fuckit = false
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -49,14 +48,6 @@ export default class App extends Component<Props> {
 
   onHistogram1 = (e) => {
     let hist = e.payload
-    if (!fuckit) {
-      alertstr = ''
-      for (let i=0; i < 25; i++) {
-        alertstr += (hist[i] + ',')
-      }
-      alert(alertstr)
-      fuckit = true
-    }
     let thickness = (this.state.windowheight / (this.histSizeNum + 10) / 5)
     if (thickness > 5) {
       thickness = 5
@@ -105,13 +96,13 @@ export default class App extends Component<Props> {
       histogramMat = this.state.histogramMat
       histSize = this.state.histSize
       ranges = this.state.ranges
-      halfHeight = this.state.windowwidth * 0.5 // double right?
+      thirdHeight = this.state.windowwidth * 0.33333333 // double right?
     }
 
     return (
       <View style={styles.container}>
           <CvInvokeGroup groupid='invokeGroup0'>
-            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0.0,"p5":1}} callback='onHistogram1'/>
+            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":thirdHeight,"p4":0.0,"p5":1}} callback='onHistogram1'/>
             <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
             <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
           </CvInvokeGroup>
