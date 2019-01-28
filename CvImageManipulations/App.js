@@ -7,10 +7,10 @@
  */
 
 import React, {Component} from 'react';
-import {Dimensions, TouchableOpacity, ScrollView, Image, Platform, StyleSheet, Text, View} from 'react-native';
-import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat,
-  MatOfInt, MatOfFloat} from 'react-native-opencv3';
+import {Dimensions, DeviceEventEmitter, TouchableOpacity, ScrollView, Image, Platform, StyleSheet, Text, View} from 'react-native';
+import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat, MatOfInt, MatOfFloat} from 'react-native-opencv3';
 
+let fuckit = false
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
   android:
@@ -23,19 +23,22 @@ export default class App extends Component<Props> {
   constructor(props) {
     super(props)
     let {height, width} = Dimensions.get('window')
-    this.scrollView = React.createRef();
+    this.scrollView = React.createRef()
+    this.histSizeNum = 25
     this.state = { scrollleft : width - 64, windowwidth : width, windowheight : height }
   }
 
   componentDidMount = async() => {
-    let interMat = await new Mat(150,150,CvType.CV_8UC4).init()
+    let interMat = await new Mat().init()
     let channelZero = await new MatOfInt(0).init()
     let maskMat = await new Mat().init()
     let histogramMat = await new Mat().init()
     let ranges = await new MatOfFloat(0.0, 256.0).init()
-
+    let histSize = await new MatOfInt(this.histSizeNum).init()
     this.setState({ ...this.state, interMat : interMat, channelZero : channelZero,
-      maskMat : maskMat, histogramMat : histogramMat, ranges : ranges })
+      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges })
+
+    DeviceEventEmitter.addListener('onHistogram1', this.onHistogram1);
 
     setTimeout(() => {
       if (this.scrollView && this.scrollView.current) {
@@ -45,21 +48,20 @@ export default class App extends Component<Props> {
   }
 
   onHistogram1 = (e) => {
-    const mHistSizeNum = 25
-    let hist
-    RNCv.Mat().then((res) => {
-      hist.matIndex = res.matIndex
-      hist.rows = res.rows
-      hist.cols = res.cols
-      hist.CvType = res.CvType
-    })
-    alert('hist is: ' + JSON.stringify(hist))
-    let thickness = (this.state.windowheight / (mHistSizeNum + 10) / 5)
+    let hist = e.payload
+    if (!fuckit) {
+      alertstr = ''
+      for (let i=0; i < 25; i++) {
+        alertstr += (hist[i] + ',')
+      }
+      alert(alertstr)
+      fuckit = true
+    }
+    let thickness = (this.state.windowheight / (this.histSizeNum + 10) / 5)
     if (thickness > 5) {
       thickness = 5
     }
-    const offset = ((this.state.windowheight - (5*mHistSizeNum + 4*10)*thickness)/2)
-    alert('Inside onHistogram1')
+    const offset = ((this.state.windowheight - (5*this.histSizeNum + 4*10)*thickness)/2)
   }
 
   press1 = (e) => {
@@ -95,26 +97,24 @@ export default class App extends Component<Props> {
   }
 
   render() {
-    const rgba='CvCameraFrame'
-    let interMat, channelZero, maskMat, histogramMat, ranges
+    let interMat, channelZero, maskMat, histogramMat, histSize, ranges, halfHeight
     if (this.state && this.state.interMat) {
       interMat = this.state.interMat
       channelZero = this.state.channelZero
       maskMat = this.state.maskMat
       histogramMat = this.state.histogramMat
+      histSize = this.state.histSize
       ranges = this.state.ranges
+      halfHeight = this.state.windowwidth * 0.5 // double right?
     }
 
     return (
       <View style={styles.container}>
-        <CvInvokeGroup groupid='invokeGroup1'>
-          <CvInvoke func='whateverthefuck' params={{"p1":"fuck","p2":"this shit","p3":"up"}}/>
           <CvInvokeGroup groupid='invokeGroup0'>
-            <CvInvoke func='hist.get' params={{"p1":0,"p2":0,"p3":"payload"}} callback='onHistogram1'/>
-            <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_BayerRG2BGR_VNG}}/>
+            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0.0,"p5":1}} callback='onHistogram1'/>
+            <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
             <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
           </CvInvokeGroup>
-        </CvInvokeGroup>
         <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
           <TouchableOpacity  onPress={this.press1} style={styles.to}>
             <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
