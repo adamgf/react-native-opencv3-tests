@@ -9,8 +9,9 @@
   "dependencies": {
     "react": "16.6.1",
     "react-native": "0.57.8",
+    "react-native-fs": "^2.13.3",
     "react-native-image": "^0.1.1",
-    "react-native-opencv3": "^1.0.4"
+    "react-native-opencv3": "https://github.com/adamgf/react-native-opencv3.git"
   },
   "devDependencies": {
     "babel-jest": "23.6.0",
