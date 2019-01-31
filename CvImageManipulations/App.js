@@ -48,6 +48,7 @@ export default class App extends Component<Props> {
 
   onHistogram1 = (e) => {
     let hist = e.payload
+    //alert('in onHistogram1 val is: ' + hist[0])
     let thickness = (this.state.windowheight / (this.histSizeNum + 10) / 5)
     if (thickness > 5) {
       thickness = 5
@@ -96,13 +97,13 @@ export default class App extends Component<Props> {
       histogramMat = this.state.histogramMat
       histSize = this.state.histSize
       ranges = this.state.ranges
-      thirdHeight = this.state.windowwidth * 0.33333333 // double right?
+      halfHeight = this.state.windowwidth * 0.5 // double right?
     }
 
     return (
       <View style={styles.container}>
           <CvInvokeGroup groupid='invokeGroup0'>
-            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":thirdHeight,"p4":0.0,"p5":1}} callback='onHistogram1'/>
+            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0.0,"p5":1}} callback='onHistogram1'/>
             <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
             <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }}/>
           </CvInvokeGroup>
