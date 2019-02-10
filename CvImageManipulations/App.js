@@ -82,20 +82,18 @@ export default class App extends Component<Props> {
       }
 
       const RGBScalars = [RGBScalar0,RGBScalar1,RGBScalar2]
-      let histNum = hist.length - 1
       for (let c=0;c < hist.length;c++) {
         const offset = ((frameWidth - (5*this.histSizeNum + 4*10)*thickness)/2)
         for (let h=0;h < this.histSizeNum;h++) {
             const x1 = offset + (c * (this.histSizeNum + 10) + h) * thickness
             const x2 = x1
             const y1 = frameHeight - 1.0
-            const y2 = y1 - 2.0 - hist[histNum][h]
+            const y2 = y1 - 2.0 - hist[c][h]
             let mP1 = new CvPoint(x1, y1)
             let mP2 = new CvPoint(x2, y2)
             //RNCv.drawLine(histMat,mP1,mP2,RGBScalar,5);
             RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":RGBScalars[c],"p5":thickness})
         }
-        histNum--
       }
 
       if (this.cvCamera && this.cvCamera.current) {
