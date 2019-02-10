@@ -64,6 +64,8 @@ export default class App extends Component<Props> {
     if (!this.state.fillMat) {
       const { frameWidth, frameHeight } = JSON.parse(e.payload).frameSize
       let fillMat = await new Mat(frameWidth,frameHeight,CvType.CV_8UC4).init()
+      const scalarVal = new CvScalar(0.0, 0.0, 0.0, 0.0)
+      fillMat.setTo(scalarVal)
       this.setState({ ...this.state, frameWidth: frameWidth, frameHeight: frameHeight, fillMat: fillMat, halfHeight : frameHeight / 2.0 })
     }
   }
