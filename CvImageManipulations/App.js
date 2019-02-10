@@ -31,15 +31,18 @@ export default class App extends Component<Props> {
 
   componentDidMount = async() => {
     // I like to use camelCase similar to camelToe
-    let interMat = await new Mat().init()
-    let channelOne = await new MatOfInt(1).init()
-    let maskMat = await new Mat().init()
-    let histogramMat = await new Mat().init()
-    let ranges = await new MatOfFloat(0.0, 256.0).init()
-    let histSize = await new MatOfInt(this.histSizeNum).init()
+    const interMat = await new Mat().init()
+    const channelZero = await new MatOfInt(0).init()
+    const channelOne = await new MatOfInt(1).init()
+    const channelTwo = await new MatOfInt(2).init()
+    const maskMat = await new Mat().init()
+    const histogramMat = await new Mat().init()
+    const ranges = await new MatOfFloat(0.0, 256.0).init()
+    const histSize = await new MatOfInt(this.histSizeNum).init()
 
-    const scalarVal = new CvScalar(0.0, 0.0, 0.0, 0.0)
+    const RGBScalar0 = new CvScalar(200.0, 0.0, 0.0, 255.0)
     const RGBScalar1 = new CvScalar(0.0, 200.0, 0.0, 255.0)
+    const RGBScalar2 = new CvScalar(0.0, 0.0, 200.0, 255.0)
 
     //await this.RNFS.unlink(outputFilename)
 
@@ -47,8 +50,8 @@ export default class App extends Component<Props> {
     ///const { uri } = fillImage
     //alert('uri is: file://' + uri)
 
-    this.setState({ ...this.state, interMat : interMat, channelOne : channelOne,
-      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges, clearColor : scalarVal, RGBScalar1 : RGBScalar1 })
+    this.setState({ ...this.state, interMat : interMat, channelZero : channelZero, channelOne : channelOne, channelTwo : channelTwo,
+      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges, RGBScalar0 : RGBScalar0, RGBScalar1 : RGBScalar1, RGBScalar2 : RGBScalar2 })
 
     DeviceEventEmitter.addListener('onHistograms', this.onHistograms);
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
@@ -64,15 +67,13 @@ export default class App extends Component<Props> {
     if (!this.state.fillMat) {
       const { frameWidth, frameHeight } = JSON.parse(e.payload).frameSize
       let fillMat = await new Mat(frameWidth,frameHeight,CvType.CV_8UC4).init()
-      const scalarVal = new CvScalar(0.0, 0.0, 0.0, 0.0)
-      fillMat.setTo(scalarVal)
       this.setState({ ...this.state, frameWidth: frameWidth, frameHeight: frameHeight, fillMat: fillMat, halfHeight : frameHeight / 2.0 })
     }
   }
 
   onHistograms = async(e) => {
-    let hist = e.payload
-    const { frameWidth, frameHeight, fillMat, clearColor, RGBScalar1 } = this.state
+    const hist = e.payload
+    const { frameWidth, frameHeight, fillMat, RGBScalar0, RGBScalar1, RGBScalar2 } = this.state
 
     if (fillMat) {
       let thickness = (frameWidth / (this.histSizeNum + 10) / 5)
@@ -80,17 +81,21 @@ export default class App extends Component<Props> {
         thickness = 5
       }
 
-      const c = 1
-      const offset = ((frameWidth - (5*this.histSizeNum + 4*10)*thickness)/2)
-      for (let h=0;h < this.histSizeNum;h++) {
-          const x1 = offset + ((this.histSizeNum + 10) + h) * thickness
-          const x2 = x1
-          const y1 = frameHeight - 1.0
-          const y2 = y1 - 2.0 - hist[h]
-          let mP1 = new CvPoint(x1, y1)
-          let mP2 = new CvPoint(x2, y2)
-          //RNCv.drawLine(histMat,mP1,mP2,RGBScalar,5);
-          RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":RGBScalar1,"p5":thickness})
+      const RGBScalars = [RGBScalar0,RGBScalar1,RGBScalar2]
+      let histNum = hist.length - 1
+      for (let c=0;c < hist.length;c++) {
+        const offset = ((frameWidth - (5*this.histSizeNum + 4*10)*thickness)/2)
+        for (let h=0;h < this.histSizeNum;h++) {
+            const x1 = offset + (c * (this.histSizeNum + 10) + h) * thickness
+            const x2 = x1
+            const y1 = frameHeight - 1.0
+            const y2 = y1 - 2.0 - hist[histNum][h]
+            let mP1 = new CvPoint(x1, y1)
+            let mP2 = new CvPoint(x2, y2)
+            //RNCv.drawLine(histMat,mP1,mP2,RGBScalar,5);
+            RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":RGBScalars[c],"p5":thickness})
+        }
+        histNum--
       }
 
       if (this.cvCamera && this.cvCamera.current) {
@@ -133,15 +138,23 @@ export default class App extends Component<Props> {
   }
 
   render() {
-    const { interMat, channelOne, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat } = this.state
+    const { interMat, channelZero, channelOne, channelTwo, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat } = this.state
 
     return (
       <View style={styles.container}>
-          <CvInvokeGroup groupid='invokeGroup0'>
-            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+        <CvInvokeGroup groupid='invokeGroup2'>
+          <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+          <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+          <CvInvokeGroup groupid='invokeGroup1'>
+            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
             <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelOne,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
-            <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+            <CvInvokeGroup groupid='invokeGroup0'>
+              <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+              <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+              <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+            </CvInvokeGroup>
           </CvInvokeGroup>
+        </CvInvokeGroup>
         <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
           <TouchableOpacity  onPress={this.press1} style={styles.to}>
             <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
