@@ -26,7 +26,7 @@ export default class App extends Component<Props> {
     this.scrollView = React.createRef()
     this.cvCamera = React.createRef()
     this.histSizeNum = 25.0
-    this.state = { scrollleft : width - 64, windowwidth : width, windowheight : height }
+    this.state = { scrollleft : width - 64, windowwidth : width, windowheight : height, currMode : 'RGBA' }
   }
 
   componentDidMount = async() => {
@@ -143,17 +143,70 @@ export default class App extends Component<Props> {
   }
 
   press7 = (e) => {
-    alert('pressed 7')
+    this.setState({ ...this.state, currMode : 'HISTOGRAM' })
   }
 
   press8 = (e) => {
-    alert('pressed 8')
+    const { fillMat } = this.state
+    setTimeout(() => {
+      if (this.cvCamera && this.cvCamera.current) {
+        // have to do this for performance ...
+        fillMat.setTo(CvScalar.all(0))
+        this.cvCamera.current.setOverlay(fillMat)
+      }
+    }, 500);
+    this.setState({ ...this.state, currMode : 'RGBA' })
   }
 
+  renderScrollView = () => {
+    return(
+      <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
+        <TouchableOpacity  onPress={this.press1} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press2} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press3} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press4} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press5} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press6} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press7} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+        <TouchableOpacity  onPress={this.press8} style={styles.to}>
+          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+        </TouchableOpacity>
+      </ScrollView>
+      )
+  }
   render() {
-    const { interMat, channelZero, channelOne, channelTwo, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat } = this.state
+    const { interMat, channelZero, channelOne, channelTwo, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat, currMode, frameWidth, frameHeight } = this.state
 
-    return (
+    const left = frameWidth / 8
+    const top = frameHeight / 8
+    const width = frameWidth * 3 / 4
+    const height = frameHeight * 3 / 4
+
+    switch(currMode) {
+      default:
+      case 'RGBA':
+      return (
+      <View style={styles.container}>
+        <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+        {this.renderScrollView()}
+      </View>
+      )
+      case 'HISTOGRAM':
+      return (
       <View style={styles.container}>
         <CvInvokeGroup groupid='invokeGroup4'>
           <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
@@ -178,34 +231,10 @@ export default class App extends Component<Props> {
             </CvInvokeGroup>
           </CvInvokeGroup>
         </CvInvokeGroup>
-        <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
-          <TouchableOpacity  onPress={this.press1} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press2} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press3} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press4} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press5} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press6} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press7} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-          <TouchableOpacity  onPress={this.press8} style={styles.to}>
-            <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
-          </TouchableOpacity>
-        </ScrollView>
+        {this.renderScrollView()}
       </View>
-    );
+      )
+    }
   }
 }
 
