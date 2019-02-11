@@ -40,10 +40,6 @@ export default class App extends Component<Props> {
     const ranges = await new MatOfFloat(0.0, 256.0).init()
     const histSize = await new MatOfInt(this.histSizeNum).init()
 
-    const RGBScalar0 = new CvScalar(200.0, 0.0, 0.0, 255.0)
-    const RGBScalar1 = new CvScalar(0.0, 200.0, 0.0, 255.0)
-    const RGBScalar2 = new CvScalar(0.0, 0.0, 200.0, 255.0)
-
     //await this.RNFS.unlink(outputFilename)
 
     //let fillImage = await RNCv.matToImage(fillMat, outputFilename)
@@ -51,7 +47,7 @@ export default class App extends Component<Props> {
     //alert('uri is: file://' + uri)
 
     this.setState({ ...this.state, interMat : interMat, channelZero : channelZero, channelOne : channelOne, channelTwo : channelTwo,
-      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges, RGBScalar0 : RGBScalar0, RGBScalar1 : RGBScalar1, RGBScalar2 : RGBScalar2 })
+      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges })
 
     DeviceEventEmitter.addListener('onHistograms', this.onHistograms);
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
@@ -73,7 +69,7 @@ export default class App extends Component<Props> {
 
   onHistograms = async(e) => {
     const hist = e.payload
-    const { frameWidth, frameHeight, fillMat, RGBScalar0, RGBScalar1, RGBScalar2 } = this.state
+    const { frameWidth, frameHeight, fillMat } = this.state
 
     if (fillMat) {
       let thickness = (frameWidth / (this.histSizeNum + 10) / 5)
@@ -81,7 +77,18 @@ export default class App extends Component<Props> {
         thickness = 5
       }
 
-      const RGBScalars = [RGBScalar0,RGBScalar1,RGBScalar2]
+      const RGBScalars = [new CvScalar(200, 0, 0, 255), new CvScalar(0, 200, 0, 255), new CvScalar(0, 0, 200, 255)]
+
+      const whiteScalar = CvScalar.all(255)
+
+      const colorsHue = [
+        new CvScalar(255, 0, 0, 255),   new CvScalar(255, 60, 0, 255),  new CvScalar(255, 120, 0, 255), new CvScalar(255, 180, 0, 255), new CvScalar(255, 240, 0, 255),
+        new CvScalar(215, 213, 0, 255), new CvScalar(150, 255, 0, 255), new CvScalar(85, 255, 0, 255),  new CvScalar(20, 255, 0, 255),  new CvScalar(0, 255, 30, 255),
+        new CvScalar(0, 255, 85, 255),  new CvScalar(0, 255, 150, 255), new CvScalar(0, 255, 215, 255), new CvScalar(0, 234, 255, 255), new CvScalar(0, 170, 255, 255),
+        new CvScalar(0, 120, 255, 255), new CvScalar(0, 60, 255, 255),  new CvScalar(0, 0, 255, 255),   new CvScalar(64, 0, 255, 255),  new CvScalar(120, 0, 255, 255),
+        new CvScalar(180, 0, 255, 255), new CvScalar(255, 0, 255, 255), new CvScalar(255, 0, 215, 255), new CvScalar(255, 0, 85, 255),  new CvScalar(255, 0, 0, 255)
+      ]
+
       for (let c=0;c < hist.length;c++) {
         const offset = ((frameWidth - (5*this.histSizeNum + 4*10)*thickness)/2)
         for (let h=0;h < this.histSizeNum;h++) {
@@ -92,7 +99,15 @@ export default class App extends Component<Props> {
             let mP1 = new CvPoint(x1, y1)
             let mP2 = new CvPoint(x2, y2)
             //RNCv.drawLine(histMat,mP1,mP2,RGBScalar,5);
-            RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":RGBScalars[c],"p5":thickness})
+            if (c < 3) {
+              RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":RGBScalars[c],"p5":thickness})
+            }
+            else if (c === 3) {
+              RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":whiteScalar,"p5":thickness})
+            }
+            else if (c === 4) {
+              RNCv.invokeMethod("line", {"p1":fillMat,"p2":mP1,"p3":mP2,"p4":colorsHue[h],"p5":thickness})
+            }
         }
       }
 
@@ -140,16 +155,26 @@ export default class App extends Component<Props> {
 
     return (
       <View style={styles.container}>
-        <CvInvokeGroup groupid='invokeGroup2'>
+        <CvInvokeGroup groupid='invokeGroup4'>
           <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
-          <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
-          <CvInvokeGroup groupid='invokeGroup1'>
+          <CvInvoke func='calcHist' params={{"p1":interMat,"p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+          <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}/>
+          <CvInvokeGroup groupid='invokeGroup3'>
             <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
-            <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelOne,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
-            <CvInvokeGroup groupid='invokeGroup0'>
+            <CvInvoke func='calcHist' params={{"p1":interMat,"p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+            <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}/>
+            <CvInvokeGroup groupid='invokeGroup2'>
               <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
-              <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
-              <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+              <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+              <CvInvokeGroup groupid='invokeGroup1'>
+                <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+                <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelOne,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+                <CvInvokeGroup groupid='invokeGroup0'>
+                  <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+                  <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
+                  <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+                </CvInvokeGroup>
+              </CvInvokeGroup>
             </CvInvokeGroup>
           </CvInvokeGroup>
         </CvInvokeGroup>
