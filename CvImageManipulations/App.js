@@ -132,11 +132,13 @@ export default class App extends Component<Props> {
   }
 
   press1 = (e) => {
-    alert('pressed 1')
+    this.resetFillMat()
+    this.setState({ ...this.state, currMode : 'POSTERIZE' })
   }
 
   press2 = (e) => {
-    alert('pressed 2')
+    this.resetFillMat()
+    this.setState({ ...this.state, currMode : 'PIXELIZE' })
   }
 
   press3 = (e) => {
@@ -224,6 +226,11 @@ export default class App extends Component<Props> {
     const zoomPoint1 = new CvPoint(1, 1)
     const zoomPoint2 = new CvPoint(wsize.width - 2, wsize.height - 2)
 
+	const size0 = new CvSize()
+	const iwsize = new CvSize(right - left, bottom - top)  
+	  
+	const posterScalar = new CvScalar(0, 0, 0, 255)
+	  
     switch(currMode) {
       default:
       case 'RGBA':
@@ -310,7 +317,7 @@ export default class App extends Component<Props> {
         <CvInvokeGroup groupid='invokeGroup0'>
           <CvInvoke inobj='zoomWindow' func='release'/>
           <CvInvoke inobj='zoomCorner' func='release'/>
-          <CvInvoke func='line' params={{"p1":"zoomWindow","p2":zoomPoint1,"p3":zoomPoint2,"p4":zoomScalar,"p5":2}}/>
+          <CvInvoke func='rectangle' params={{"p1":"zoomWindow","p2":zoomPoint1,"p3":zoomPoint2,"p4":zoomScalar,"p5":2}}/>
           <CvInvoke func='resize' params={{"p1":"zoomWindow","p2":"zoomCorner","p3":csize,"p4":0,"p5":0,"p6":5}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":zwTop,"p2":zwBottom,"p3":zwLeft,"p4":zwRight}} outobj='zoomWindow'/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":zcTop,"p2":zcBottom,"p3":zcLeft,"p4":zcRight}} outobj='zoomCorner'/>
@@ -319,6 +326,37 @@ export default class App extends Component<Props> {
         {this.renderScrollView()}
       </View>
       )
+  	  case 'PIXELIZE':
+      return (
+      <View style={styles.container}>
+        <CvInvoke inobj='rbgaInnerWindow' func='release'>
+          <CvInvoke func="resize" params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":iwsize,"p4":0.,"p5":0.,"p6":Imgproc.INTER_NEAREST}}>
+      	    <CvInvoke func="resize" params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":size0,"p4":0.1,"p5":0.1,"p6":Imgproc.INTER_NEAREST}}>
+              <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'>
+                <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+              </CvInvoke>
+            </CvInvoke>
+	      </CvInvoke>
+        </CvInvoke>
+        {this.renderScrollView()}
+      </View>
+      )
+      case 'POSTERIZE':
+      return (
+      <View style={styles.container}>
+        <CvInvokeGroup groupid='zeeGrup'>
+          <CvInvoke inobj='rgbaInnerWindow' func='release'/>
+          <CvInvoke func='convertScaleAbs' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":16,"p4":0}}/>
+          <CvInvoke func='convertScaleAbs' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":1./16,"p4":0}}/>
+          <CvInvoke inobj='rgbaInnerWindow' func='setTo' params={{"p1":posterScalar,"p2":interMat}}/>
+          <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
+          <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
+          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+        </CvInvokeGroup>
+        {this.renderScrollView()}
+      </View>
+      )
+	  
     }
   }
 }
