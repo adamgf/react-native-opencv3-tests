@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {Dimensions, DeviceEventEmitter, TouchableOpacity, ScrollView, Image, Platform, StyleSheet, Text, View} from 'react-native';
-import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Mat, MatOfInt, MatOfFloat, CvScalar, CvPoint} from 'react-native-opencv3';
+import {RNCv, CvCamera, CvInvoke, CvInvokeGroup, ColorConv, CvType, Imgproc, Mat, MatOfInt, MatOfFloat, CvScalar, CvPoint, CvSize} from 'react-native-opencv3';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -140,7 +140,8 @@ export default class App extends Component<Props> {
   }
 
   press3 = (e) => {
-    alert('pressed 3')
+    this.resetFillMat()
+    this.setState({ ...this.state, currMode : 'ZOOM' })
   }
 
   press4 = (e) => {
@@ -207,6 +208,22 @@ export default class App extends Component<Props> {
     const right = left + width
     const bottom = top + height
 
+    const zcLeft = 0
+    const zcRight = frameWidth / 2 - frameWidth / 10
+    const zcTop = 0
+    const zcBottom = frameHeight / 2 - frameHeight / 10
+
+    const zwLeft = frameWidth / 2 - 9 * frameWidth / 100
+    const zwRight = frameWidth / 2 + 9 * frameWidth / 100
+    const zwTop = frameHeight / 2 - 9 * frameHeight / 100
+    const zwBottom = frameHeight / 2 + 9 * frameHeight / 100
+
+    const zoomScalar = new CvScalar(255, 0, 0, 255)
+    const wsize = new CvSize(zwRight - zwLeft, zwBottom - zwTop)
+    const csize = new CvSize(zcRight - zcLeft, zcBottom - zcTop)
+    const zoomPoint1 = new CvPoint(1, 1)
+    const zoomPoint2 = new CvPoint(wsize.width - 2, wsize.height - 2)
+
     switch(currMode) {
       default:
       case 'RGBA':
@@ -261,7 +278,7 @@ export default class App extends Component<Props> {
       case 'SOBEL':
       return (
       <View style={styles.container}>
-        <CvInvokeGroup groupid='invokeGroup1'>
+        <CvInvokeGroup groupid='invokeGroup0'>
           <CvInvoke inobj='rbgaInnerWindow' func='release'/>
           <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
@@ -284,6 +301,21 @@ export default class App extends Component<Props> {
             </CvInvoke>
           </CvInvoke>
         </CvInvoke>
+        {this.renderScrollView()}
+      </View>
+      )
+      case 'ZOOM':
+      return (
+      <View style={styles.container}>
+        <CvInvokeGroup groupid='invokeGroup0'>
+          <CvInvoke inobj='zoomWindow' func='release'/>
+          <CvInvoke inobj='zoomCorner' func='release'/>
+          <CvInvoke func='line' params={{"p1":"zoomWindow","p2":zoomPoint1,"p3":zoomPoint2,"p4":zoomScalar,"p5":2}}/>
+          <CvInvoke func='resize' params={{"p1":"zoomWindow","p2":"zoomCorner","p3":csize,"p4":0,"p5":0,"p6":5}}/>
+          <CvInvoke inobj='rgba' func='submat' params={{"p1":zwTop,"p2":zwBottom,"p3":zwLeft,"p4":zwRight}} outobj='zoomWindow'/>
+          <CvInvoke inobj='rgba' func='submat' params={{"p1":zcTop,"p2":zcBottom,"p3":zcLeft,"p4":zcRight}} outobj='zoomCorner'/>
+          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+        </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
       )
