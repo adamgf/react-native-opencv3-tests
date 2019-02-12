@@ -147,7 +147,8 @@ export default class App extends Component<Props> {
   }
 
   press5 = (e) => {
-    alert('pressed 5')
+    this.resetFillMat()
+    this.setState({ ...this.state, currMode : 'SOBEL' })
   }
 
   press6 = (e) => {
@@ -250,6 +251,22 @@ export default class App extends Component<Props> {
           <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
           <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
+          <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+        </CvInvokeGroup>
+        {this.renderScrollView()}
+      </View>
+      )
+      case 'SOBEL':
+      return (
+      <View style={styles.container}>
+        <CvInvokeGroup groupid='invokeGroup1'>
+          <CvInvoke inobj='rbgaInnerWindow' func='release'/>
+          <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
+          <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
+          <CvInvoke inobj='grayInnerWindow' func='release'/>
+          <CvInvoke func='convertScaleAbs' params={{"p1":interMat,"p2":interMat,"p3":10,"p4":0}}/>
+          <CvInvoke func='Sobel' params={{"p1":"grayInnerWindow","p2":interMat,"p3":CvType.CV_8U,"p4":1,"p5":1}}/>
+          <CvInvoke inobj='gray' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='grayInnerWindow'/>
           <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
         </CvInvokeGroup>
         {this.renderScrollView()}
