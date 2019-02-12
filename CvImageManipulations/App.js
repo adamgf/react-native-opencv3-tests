@@ -29,7 +29,7 @@ export default class App extends Component<Props> {
   }
 
   componentDidMount = async() => {
-    // I like to use camelCase similar to camelToe
+    // I like to use camelCase similar to cameltoe
     const interMat = await new Mat().init()
     const channelZero = await new MatOfInt(0).init()
     const channelOne = await new MatOfInt(1).init()
@@ -39,14 +39,15 @@ export default class App extends Component<Props> {
     const ranges = await new MatOfFloat(0.0, 256.0).init()
     const histSize = await new MatOfInt(this.histSizeNum).init()
 
-    //await this.RNFS.unlink(outputFilename)
-
-    //let fillImage = await RNCv.matToImage(fillMat, outputFilename)
-    ///const { uri } = fillImage
-    //alert('uri is: file://' + uri)
+    // Fill sepia kernel
+    let sepiaKernel = await new Mat(4, 4, CvType.CV_32F).init()
+    sepiaKernel.put(0, 0, /* R */0.189, 0.769, 0.393, 0)
+    sepiaKernel.put(1, 0, /* G */0.168, 0.686, 0.349, 0)
+    sepiaKernel.put(2, 0, /* B */0.131, 0.534, 0.272, 0)
+    sepiaKernel.put(3, 0, /* A */0.000, 0.000, 0.000, 1)
 
     this.setState({ ...this.state, interMat : interMat, channelZero : channelZero, channelOne : channelOne, channelTwo : channelTwo,
-      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges })
+      maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges, sepiaKernel : sepiaKernel })
 
     DeviceEventEmitter.addListener('onHistograms', this.onHistograms);
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
@@ -143,7 +144,8 @@ export default class App extends Component<Props> {
   }
 
   press4 = (e) => {
-    alert('pressed 4')
+    this.resetFillMat()
+    this.setState({ ...this.state, currMode : 'SEPIA' })
   }
 
   press5 = (e) => {
@@ -196,7 +198,7 @@ export default class App extends Component<Props> {
       )
   }
   render() {
-    const { interMat, channelZero, channelOne, channelTwo, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat, currMode, frameWidth, frameHeight } = this.state
+    const { interMat, channelZero, channelOne, channelTwo, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat, currMode, frameWidth, frameHeight, sepiaKernel } = this.state
 
     const left = frameWidth / 8
     const top = frameHeight / 8
@@ -210,7 +212,7 @@ export default class App extends Component<Props> {
       case 'RGBA':
       return (
       <View style={styles.container}>
-        <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+        <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
         {this.renderScrollView()}
       </View>
       )
@@ -251,7 +253,7 @@ export default class App extends Component<Props> {
           <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
           <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
-          <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
         </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
@@ -267,8 +269,21 @@ export default class App extends Component<Props> {
           <CvInvoke func='convertScaleAbs' params={{"p1":interMat,"p2":interMat,"p3":10,"p4":0}}/>
           <CvInvoke func='Sobel' params={{"p1":"grayInnerWindow","p2":interMat,"p3":CvType.CV_8U,"p4":1,"p5":1}}/>
           <CvInvoke inobj='gray' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='grayInnerWindow'/>
-          <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
         </CvInvokeGroup>
+        {this.renderScrollView()}
+      </View>
+      )
+      case 'SEPIA':
+      return (
+      <View style={styles.container}>
+        <CvInvoke inobj='rbgaInnerWindow' func='release'>
+          <CvInvoke func="transform" params={{"p1":"rgbaInnerWindow","p2":"rgbaInnerWindow","p3":sepiaKernel}}>
+            <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'>
+              <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+            </CvInvoke>
+          </CvInvoke>
+        </CvInvoke>
         {this.renderScrollView()}
       </View>
       )
