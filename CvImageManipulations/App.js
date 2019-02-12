@@ -21,7 +21,6 @@ export default class App extends Component<Props> {
 
   constructor(props) {
     super(props)
-    this.RNFS = require('react-native-fs')
     let {height, width} = Dimensions.get('window')
     this.scrollView = React.createRef()
     this.cvCamera = React.createRef()
@@ -118,6 +117,19 @@ export default class App extends Component<Props> {
     }
   }
 
+  resetFillMat = () => {
+    const { fillMat, currMode } = this.state
+    if (currMode === 'HISTOGRAM') {
+      setTimeout(() => {
+        if (this.cvCamera && this.cvCamera.current) {
+          // have to do this for performance ...
+          fillMat.setTo(CvScalar.all(0))
+          this.cvCamera.current.setOverlay(fillMat)
+        }
+      }, 500);
+    }
+  }
+
   press1 = (e) => {
     alert('pressed 1')
   }
@@ -139,7 +151,8 @@ export default class App extends Component<Props> {
   }
 
   press6 = (e) => {
-    alert('pressed 6')
+    this.resetFillMat()
+    this.setState({ ...this.state, currMode : 'CANNY' })
   }
 
   press7 = (e) => {
@@ -147,14 +160,7 @@ export default class App extends Component<Props> {
   }
 
   press8 = (e) => {
-    const { fillMat } = this.state
-    setTimeout(() => {
-      if (this.cvCamera && this.cvCamera.current) {
-        // have to do this for performance ...
-        fillMat.setTo(CvScalar.all(0))
-        this.cvCamera.current.setOverlay(fillMat)
-      }
-    }, 500);
+    this.resetFillMat()
     this.setState({ ...this.state, currMode : 'RGBA' })
   }
 
@@ -195,6 +201,8 @@ export default class App extends Component<Props> {
     const top = frameHeight / 8
     const width = frameWidth * 3 / 4
     const height = frameHeight * 3 / 4
+    const right = left + width
+    const bottom = top + height
 
     switch(currMode) {
       default:
@@ -213,23 +221,35 @@ export default class App extends Component<Props> {
           <CvInvoke func='calcHist' params={{"p1":interMat,"p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
           <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}/>
           <CvInvokeGroup groupid='invokeGroup3'>
-            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
             <CvInvoke func='calcHist' params={{"p1":interMat,"p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
             <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}/>
             <CvInvokeGroup groupid='invokeGroup2'>
-              <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+              <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
               <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
               <CvInvokeGroup groupid='invokeGroup1'>
-                <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+                <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
                 <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelOne,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
                 <CvInvokeGroup groupid='invokeGroup0'>
-                  <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}}/>
+                  <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
                   <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
-                  <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
+                  <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} overlayInterval={1000}/>
                 </CvInvokeGroup>
               </CvInvokeGroup>
             </CvInvokeGroup>
           </CvInvokeGroup>
+        </CvInvokeGroup>
+        {this.renderScrollView()}
+      </View>
+      )
+      case 'CANNY':
+      return (
+      <View style={styles.container}>
+        <CvInvokeGroup groupid='invokeGroup0'>
+          <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
+          <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
+          <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
+          <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} />
         </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
