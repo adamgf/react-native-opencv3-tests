@@ -246,6 +246,7 @@ export default class App extends Component<Props> {
       return (
       <View style={styles.container}>
         <CvInvokeGroup groupid='invokeGroup0'>
+          <CvInvoke inobj='rgbaInnerWindow' func='release'/>
           <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
           <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
