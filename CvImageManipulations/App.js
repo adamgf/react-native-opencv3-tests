@@ -138,7 +138,7 @@ export default class App extends Component<Props> {
 
   press2 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'PIXELIZE' })
+    this.setState({ ...this.state, currMode : 'PIXELATE' })
   }
 
   press3 = (e) => {
@@ -326,7 +326,7 @@ export default class App extends Component<Props> {
         {this.renderScrollView()}
       </View>
       )
-  	  case 'PIXELIZE':
+  	  case 'PIXELATE':
       return (
       <View style={styles.container}>
         <CvInvoke inobj='rbgaInnerWindow' func='release'>
