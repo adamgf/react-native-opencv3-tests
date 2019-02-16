@@ -49,7 +49,7 @@ export default class App extends Component<Props> {
     this.setState({ ...this.state, interMat : interMat, channelZero : channelZero, channelOne : channelOne, channelTwo : channelTwo,
       maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges, sepiaKernel : sepiaKernel })
 
-    DeviceEventEmitter.addListener('onHistograms', this.onHistograms);
+    DeviceEventEmitter.addListener('onPayload', this.onPayload);
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
 
     setTimeout(() => {
@@ -67,8 +67,9 @@ export default class App extends Component<Props> {
     }
   }
 
-  onHistograms = async(e) => {
-    const hist = e.payload
+  onPayload = async(e) => {
+    const hist = (Platform.OS === 'ios') ? e.nativeEvent.payload : e.payload
+
     const { frameWidth, frameHeight, fillMat } = this.state
 
     if (fillMat) {
@@ -244,21 +245,21 @@ export default class App extends Component<Props> {
       return (
       <View style={styles.container}>
         <CvInvokeGroup groupid='invokeGroup4'>
-          <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+          <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
           <CvInvoke func='calcHist' params={{"p1":interMat,"p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
           <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}/>
           <CvInvokeGroup groupid='invokeGroup3'>
-            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+            <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
             <CvInvoke func='calcHist' params={{"p1":interMat,"p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
             <CvInvoke func='cvtColor' params={{"p1":"rgba","p2":interMat,"p3":ColorConv.COLOR_RGB2HSV_FULL}}/>
             <CvInvokeGroup groupid='invokeGroup2'>
-              <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+              <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
               <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelTwo,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
               <CvInvokeGroup groupid='invokeGroup1'>
-                <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+                <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
                 <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelOne,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
                 <CvInvokeGroup groupid='invokeGroup0'>
-                  <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onHistograms'/>
+                  <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
                   <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
                   <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} overlayInterval={1000}/>
                 </CvInvokeGroup>
