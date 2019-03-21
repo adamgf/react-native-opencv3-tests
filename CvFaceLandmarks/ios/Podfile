@@ -28,4 +28,6 @@ target "CvFaceLandmarks" do
   pod 'RNOpencv3', :path => '../node_modules/react-native-opencv3/ios', :subspecs => [
       'CvCamera'
   ]
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
+
 end
