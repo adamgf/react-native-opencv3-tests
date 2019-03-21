@@ -6,7 +6,9 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - OpenCVmin-face (3.4.5)
+  - libopencv-contrib (3.4.1)
+  - React (0.57.8):
+    - React/Core (= 0.57.8)
   - React/Core (0.57.8):
     - yoga (= 0.57.8.React)
   - React/CxxBridge (0.57.8):
@@ -44,8 +46,11 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNFS (2.13.3):
+    - React
   - RNOpencv3/CvCamera (1.0.5):
-    - OpenCVmin-face (~> 3.4.5)
+    - libopencv-contrib (~> 3.4.1)
+    - RNFS (~> 2.13.3)
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
@@ -63,13 +68,14 @@ DEPENDENCIES:
   - React/RCTNetwork (from `../node_modules/react-native`)
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNFS (from `../node_modules/react-native-fs`)
   - RNOpencv3/CvCamera (from `../node_modules/react-native-opencv3/ios`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
-    - OpenCVmin-face
+    - libopencv-contrib
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -80,6 +86,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  RNFS:
+    :path: "../node_modules/react-native-fs"
   RNOpencv3:
     :path: "../node_modules/react-native-opencv3/ios"
   yoga:
@@ -90,11 +98,12 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
-  OpenCVmin-face: 98370101de654e7da95cc4cbe7bdf4d72454933a
+  libopencv-contrib: 01e8f05daf0e93e3f5fa395590fcf41ef312bef3
   React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  RNOpencv3: 361ab2ae63af675b6f78b8d816d751a44d10f3e7
+  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
+  RNOpencv3: f8f2ebd9ef848c23b961b359467dfd98d78e3008
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 0b7f27309237378f76ab8b2be077d93920f4615e
+PODFILE CHECKSUM: 56a211624bb13a2f981fb51a2b52d412cb3f6ea5
 
 COCOAPODS: 1.5.3
