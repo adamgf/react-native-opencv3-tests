@@ -13,7 +13,7 @@ import {CvImage, CvInvoke, ColorConv} from 'react-native-opencv3';
 
 export default class App extends Component {
   render() {
-    const originalImagePath = './images/girl_wide_brim_hat.jpeg'
+    const originalImagePath = './images/girl_wide_brim_hat.png'
 
     return (
       <View style={styles.container}>
