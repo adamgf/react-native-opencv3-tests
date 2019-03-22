@@ -7,17 +7,19 @@
     "test": "jest"
   },
   "dependencies": {
-    "react": "16.6.1",
-    "react-native": "0.57.8",
+    "react": "16.8.3",
+    "react-native": "0.59.1",
     "react-native-fs": "^2.13.3",
     "react-native-image": "^0.1.1",
     "react-native-opencv3": "^1.0.4"
   },
   "devDependencies": {
-    "babel-jest": "23.6.0",
-    "jest": "23.6.0",
-    "metro-react-native-babel-preset": "0.51.1",
-    "react-test-renderer": "16.6.1"
+    "@babel/core": "^7.4.0",
+    "@babel/runtime": "^7.4.2",
+    "babel-jest": "^24.5.0",
+    "jest": "^24.5.0",
+    "metro-react-native-babel-preset": "^0.53.1",
+    "react-test-renderer": "16.8.3"
   },
   "jest": {
     "preset": "react-native"

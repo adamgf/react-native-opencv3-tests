@@ -1,7 +1,7 @@
 rootProject.name = 'SimpleGreyscale'
-include ':react-native-fs'
-project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fs/android')
 include ':react-native-opencv3'
 project(':react-native-opencv3').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-opencv3/android')
+include ':react-native-fs'
+project(':react-native-fs').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-fs/android')
 
 include ':app'
