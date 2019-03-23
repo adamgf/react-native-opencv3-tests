@@ -46,10 +46,10 @@
 		50FC746F219964CD00A48FE3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FC7465219964CC00A48FE3 /* AVFoundation.framework */; };
 		50FC7470219964CD00A48FE3 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FC7466219964CC00A48FE3 /* CoreGraphics.framework */; };
 		50FC7471219964CD00A48FE3 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FC7467219964CC00A48FE3 /* CoreImage.framework */; };
+		6D7FDF455D20DF00F647EB03 /* libPods-CvCameraPreview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9011424520F51360BADD0C /* libPods-CvCameraPreview.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D1F85D7CA61E45EFB1F23DD2 /* libRNOpencv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D83278076E824A14B19ACE31 /* libRNOpencv3.a */; };
-		DFDC46C70CD6F88CE992B79C /* Pods_CvCameraPreview.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 97FE51CC7BAC652EC760C2F2 /* Pods_CvCameraPreview.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -359,6 +359,7 @@
 		2D02E4901E0B4A5D006451C7 /* CvCameraPreview-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CvCameraPreview-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		451B67AE547B41F1818E6F6A /* RNOpencv3.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOpencv3.xcodeproj; path = "../node_modules/react-native-opencv3/ios/RNOpencv3.xcodeproj"; sourceTree = "<group>"; };
+		4D9011424520F51360BADD0C /* libPods-CvCameraPreview.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CvCameraPreview.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		50FC7438219964CB00A48FE3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		50FC745F219964CC00A48FE3 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		50FC7460219964CC00A48FE3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
@@ -372,7 +373,6 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		97FE51CC7BAC652EC760C2F2 /* Pods_CvCameraPreview.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CvCameraPreview.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		D83278076E824A14B19ACE31 /* libRNOpencv3.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOpencv3.a; sourceTree = "<group>"; };
 		ED65BE6358839B3F14E575DF /* Pods-CvCameraPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvCameraPreview.release.xcconfig"; path = "Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview.release.xcconfig"; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				D1F85D7CA61E45EFB1F23DD2 /* libRNOpencv3.a in Frameworks */,
-				DFDC46C70CD6F88CE992B79C /* Pods_CvCameraPreview.framework in Frameworks */,
+				6D7FDF455D20DF00F647EB03 /* libPods-CvCameraPreview.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -575,7 +575,7 @@
 				50FC745F219964CC00A48FE3 /* QuartzCore.framework */,
 				50FC7464219964CC00A48FE3 /* UIKit.framework */,
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				97FE51CC7BAC652EC760C2F2 /* Pods_CvCameraPreview.framework */,
+				4D9011424520F51360BADD0C /* libPods-CvCameraPreview.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -718,7 +718,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				B8730077F341B66E00B9A466 /* [CP] Embed Pods Frameworks */,
 				6F85A4CED5AC192A3FCAF057 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1210,7 +1209,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RNOpencv3/ocvdata.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1221,7 +1220,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		86FD1CC09601933A3490FA59 /* [CP] Check Pods Manifest.lock */ = {
@@ -1244,38 +1243,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B8730077F341B66E00B9A466 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
-				"${BUILT_PRODUCTS_DIR}/Folly/folly.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFS/RNFS.framework",
-				"${BUILT_PRODUCTS_DIR}/React/React.framework",
-				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
-				"${BUILT_PRODUCTS_DIR}/yoga/yoga.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
