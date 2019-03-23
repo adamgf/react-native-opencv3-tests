@@ -107,7 +107,7 @@ SPEC CHECKSUMS:
   libopencv-contrib: 01e8f05daf0e93e3f5fa395590fcf41ef312bef3
   React: 34a405ead72252839fdc4afc1f972a7ed984af84
   RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
-  RNOpencv3: 8ece163e7fb015c63dcb76d94a24c9a84c54c75e
+  RNOpencv3: 919abd4b0e4c180ff6cd5211af5dcc8cd371fd3f
   yoga: 8fb47f180b19b0dadb285a09e4c74c8a41721d3a
 
 PODFILE CHECKSUM: 975b2e07df0e036a0e7697b0e0d92bfe9ff4848a
