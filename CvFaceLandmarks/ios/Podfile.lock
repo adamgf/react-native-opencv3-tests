@@ -50,7 +50,6 @@ PODS:
     - React
   - RNOpencv3/CvCamera (1.0.5):
     - libopencv-contrib (~> 3.4.1)
-    - RNFS (~> 2.13.3)
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
@@ -61,7 +60,6 @@ DEPENDENCIES:
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/cxxreact (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
-  - React/jschelpers (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
@@ -99,11 +97,11 @@ SPEC CHECKSUMS:
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   libopencv-contrib: 01e8f05daf0e93e3f5fa395590fcf41ef312bef3
-  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
-  RNOpencv3: f8f2ebd9ef848c23b961b359467dfd98d78e3008
-  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
+  React: adbac0757ce35e92fbd447ab98c810209d27d9b0
+  RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
+  RNOpencv3: 919abd4b0e4c180ff6cd5211af5dcc8cd371fd3f
+  yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 7cf9bdde311a348b0e6ba3e3e56e462b23ed6dca
+PODFILE CHECKSUM: fd567e7496aee620ca9955949ebfb6d23b0d9cdc
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

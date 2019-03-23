@@ -36,9 +36,9 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* CvFaceLandmarksTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CvFaceLandmarksTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		72A6E90404633EB4FAD1C864 /* libPods-CvFaceLandmarks.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A9991F6604887128509DBD1 /* libPods-CvFaceLandmarks.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		D14030B019737B1AC89BA4FE /* Pods_CvFaceLandmarks.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB8712DA1564801C6CF0BE6 /* Pods_CvFaceLandmarks.framework */; };
 		DB97C797ADF549C59702A4EF /* libRNOpencv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7C15BE9F7F5C4785BF45B545 /* libRNOpencv3.a */; };
 /* End PBXBuildFile section */
 
@@ -361,8 +361,8 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		7C15BE9F7F5C4785BF45B545 /* libRNOpencv3.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOpencv3.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		9A9991F6604887128509DBD1 /* libPods-CvFaceLandmarks.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CvFaceLandmarks.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		CFB8712DA1564801C6CF0BE6 /* Pods_CvFaceLandmarks.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CvFaceLandmarks.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35F77FAC7BECB79485639AB /* Pods_CvFaceLandmarksTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CvFaceLandmarksTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CE4776B7825C194264FC83 /* Pods-CvFaceLandmarks.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvFaceLandmarks.release.xcconfig"; path = "Pods/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks.release.xcconfig"; sourceTree = "<group>"; };
 		EFA24F749B4E4DE485253601 /* RNOpencv3.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOpencv3.xcodeproj; path = "../node_modules/react-native-opencv3/ios/RNOpencv3.xcodeproj"; sourceTree = "<group>"; };
@@ -395,7 +395,7 @@
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				DB97C797ADF549C59702A4EF /* libRNOpencv3.a in Frameworks */,
-				D14030B019737B1AC89BA4FE /* Pods_CvFaceLandmarks.framework in Frameworks */,
+				72A6E90404633EB4FAD1C864 /* libPods-CvFaceLandmarks.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -545,10 +545,10 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				CFB8712DA1564801C6CF0BE6 /* Pods_CvFaceLandmarks.framework */,
 				539B5BF8D2D0932EB6AB4ABA /* Pods_CvFaceLandmarks_tvOS.framework */,
 				2A0BF907B74E4437971FAFC4 /* Pods_CvFaceLandmarks_tvOSTests.framework */,
 				D35F77FAC7BECB79485639AB /* Pods_CvFaceLandmarksTests.framework */,
+				9A9991F6604887128509DBD1 /* libPods-CvFaceLandmarks.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -692,7 +692,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				CB3F06D86A53AA0D2452AEA5 /* [CP] Embed Pods Frameworks */,
 				1F523C67E137253AB579E968 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -1198,7 +1197,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RNOpencv3/ocvdata.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1209,7 +1208,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
@@ -1225,38 +1224,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		CB3F06D86A53AA0D2452AEA5 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
-				"${BUILT_PRODUCTS_DIR}/Folly/folly.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFS/RNFS.framework",
-				"${BUILT_PRODUCTS_DIR}/React/React.framework",
-				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
-				"${BUILT_PRODUCTS_DIR}/yoga/yoga.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvFaceLandmarks/Pods-CvFaceLandmarks-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
