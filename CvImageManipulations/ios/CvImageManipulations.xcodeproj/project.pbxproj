@@ -13,7 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* CvImageManipulationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CvImageManipulationsTests.m */; };
-		075ABFD9907438DD0CF2BA94 /* Pods_CvImageManipulations.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F881E0A0ADA4F3B8DE8AE8E1 /* Pods_CvImageManipulations.framework */; };
 		11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -38,6 +37,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* CvImageManipulationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* CvImageManipulationsTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
+		8B4F1DEDBE4DFF997C757B4B /* libPods-CvImageManipulations.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAE101D1C05F019062EAF3F /* libPods-CvImageManipulations.a */; };
 		92DF43FD5E23476BA8143F5F /* libRNFS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E95E0840705412A9F712F1A /* libRNFS.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		F17AD84483F44E90943B2B89 /* libRNOpencv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F51116B2F18B49928E073169 /* libRNOpencv3.a */; };
@@ -289,13 +289,6 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNOpencv3;
 		};
-		5084124C2213D869007835FA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7152391763044E048898B5EA /* RNOpencv3.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 50B7C94721C89E3F00A43F6B;
-			remoteInfo = ocvdata;
-		};
 		508412522213D869007835FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C196A26856F4AFAB1A6A013 /* RNFS.xcodeproj */;
@@ -371,6 +364,7 @@
 		2D02E4901E0B4A5D006451C7 /* CvImageManipulations-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "CvImageManipulations-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		34F65DE06ACE23AAD125B106 /* Pods-CvImageManipulations.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvImageManipulations.release.xcconfig"; path = "Pods/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations.release.xcconfig"; sourceTree = "<group>"; };
+		3DAE101D1C05F019062EAF3F /* libPods-CvImageManipulations.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CvImageManipulations.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C196A26856F4AFAB1A6A013 /* RNFS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFS.xcodeproj; path = "../node_modules/react-native-fs/RNFS.xcodeproj"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		5E95E0840705412A9F712F1A /* libRNFS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFS.a; sourceTree = "<group>"; };
@@ -380,7 +374,6 @@
 		A749FFDE3E3AEE5B010582F9 /* Pods-CvImageManipulations.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvImageManipulations.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations.debug.xcconfig"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		F51116B2F18B49928E073169 /* libRNOpencv3.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOpencv3.a; sourceTree = "<group>"; };
-		F881E0A0ADA4F3B8DE8AE8E1 /* Pods_CvImageManipulations.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CvImageManipulations.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -410,7 +403,7 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				F17AD84483F44E90943B2B89 /* libRNOpencv3.a in Frameworks */,
 				92DF43FD5E23476BA8143F5F /* libRNFS.a in Frameworks */,
-				075ABFD9907438DD0CF2BA94 /* Pods_CvImageManipulations.framework in Frameworks */,
+				8B4F1DEDBE4DFF997C757B4B /* libPods-CvImageManipulations.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -560,7 +553,7 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				F881E0A0ADA4F3B8DE8AE8E1 /* Pods_CvImageManipulations.framework */,
+				3DAE101D1C05F019062EAF3F /* libPods-CvImageManipulations.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -578,7 +571,6 @@
 			isa = PBXGroup;
 			children = (
 				5084124B2213D869007835FA /* libRNOpencv3.a */,
-				5084124D2213D869007835FA /* ocvdata.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -715,7 +707,6 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				AA3C8E98F1403613CAA99E21 /* [CP] Embed Pods Frameworks */,
 				3E7236C6FB59E1802B3095C0 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
@@ -774,7 +765,11 @@
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
+						DevelopmentTeam = KPVD84QZHR;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
+					};
+					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = KPVD84QZHR;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -1098,13 +1093,6 @@
 			remoteRef = 5084124A2213D869007835FA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		5084124D2213D869007835FA /* ocvdata.bundle */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = ocvdata.bundle;
-			remoteRef = 5084124C2213D869007835FA /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		508412532213D869007835FA /* libRNFS.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1227,7 +1215,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/RNOpencv3/ocvdata.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
@@ -1238,7 +1226,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		46FB8DD40FD151A149ED5683 /* [CP] Check Pods Manifest.lock */ = {
@@ -1261,38 +1249,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		AA3C8E98F1403613CAA99E21 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/DoubleConversion/DoubleConversion.framework",
-				"${BUILT_PRODUCTS_DIR}/Folly/folly.framework",
-				"${BUILT_PRODUCTS_DIR}/RNFS/RNFS.framework",
-				"${BUILT_PRODUCTS_DIR}/React/React.framework",
-				"${BUILT_PRODUCTS_DIR}/glog/glog.framework",
-				"${BUILT_PRODUCTS_DIR}/yoga/yoga.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DoubleConversion.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/folly.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RNFS.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/React.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/glog.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/yoga.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-CvImageManipulations/Pods-CvImageManipulations-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1364,6 +1320,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = KPVD84QZHR;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1396,6 +1353,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
+				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
@@ -1426,6 +1384,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
@@ -1450,6 +1409,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = KPVD84QZHR;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",

@@ -1,11 +1,10 @@
 platform :ios, '9.0'
 
-use_frameworks!
+# use_frameworks!
 
 target "CvImageManipulations" do
   pod 'React', :path => '../node_modules/react-native', :subspecs => [
     'Core',
-    'jschelpers',
     'cxxreact',
     'CxxBridge', # Include this for RN >= 0.47
     'DevSupport', # Include this to enable In-App Devmenu if RN >= 0.43
@@ -25,8 +24,8 @@ target "CvImageManipulations" do
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
 
-  pod 'RNFS', :path => '../node_modules/react-native-fs'
   pod 'RNOpencv3', :path => '../node_modules/react-native-opencv3/ios', :subspecs => [
       'CvCamera'
   ]
+  pod 'RNFS', :path => '../node_modules/react-native-fs'
 end

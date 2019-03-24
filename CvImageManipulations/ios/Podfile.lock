@@ -6,7 +6,7 @@ PODS:
     - DoubleConversion
     - glog
   - glog (0.3.5)
-  - OpenCVmin-face (3.4.5)
+  - libopencv-contrib (3.4.1)
   - React (0.57.8):
     - React/Core (= 0.57.8)
   - React/Core (0.57.8):
@@ -49,7 +49,7 @@ PODS:
   - RNFS (2.13.3):
     - React
   - RNOpencv3/CvCamera (1.0.5):
-    - OpenCVmin-face (~> 3.4.5)
+    - libopencv-contrib (~> 3.4.1)
   - yoga (0.57.8.React)
 
 DEPENDENCIES:
@@ -60,7 +60,6 @@ DEPENDENCIES:
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/cxxreact (from `../node_modules/react-native`)
   - React/DevSupport (from `../node_modules/react-native`)
-  - React/jschelpers (from `../node_modules/react-native`)
   - React/RCTActionSheet (from `../node_modules/react-native`)
   - React/RCTAnimation (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
@@ -74,7 +73,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - boost-for-react-native
-    - OpenCVmin-face
+    - libopencv-contrib
 
 EXTERNAL SOURCES:
   DoubleConversion:
@@ -97,12 +96,12 @@ SPEC CHECKSUMS:
   DoubleConversion: bb338842f62ab1d708ceb63ec3d999f0f3d98ecd
   Folly: c89ac2d5c6ab169cd7397ef27485c44f35f742c7
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
-  OpenCVmin-face: 98370101de654e7da95cc4cbe7bdf4d72454933a
-  React: 1fe0eb13d90b625d94c3b117c274dcfd2e760e11
-  RNFS: bbb1a64eb245763daf34aea86f97c97c4e85f74c
-  RNOpencv3: 361ab2ae63af675b6f78b8d816d751a44d10f3e7
-  yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
+  libopencv-contrib: 01e8f05daf0e93e3f5fa395590fcf41ef312bef3
+  React: adbac0757ce35e92fbd447ab98c810209d27d9b0
+  RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
+  RNOpencv3: 919abd4b0e4c180ff6cd5211af5dcc8cd371fd3f
+  yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: 5a7a04e9af82457f182c79df7390e188aeff6d7c
+PODFILE CHECKSUM: 2e541466ab92c829f4cc65fb0d0d60a9366ab3eb
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1
