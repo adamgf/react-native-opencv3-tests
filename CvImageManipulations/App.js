@@ -44,8 +44,8 @@ export default class App extends Component<Props> {
     sepiaKernel.put(0, 0, /* R */0.189, 0.769, 0.393, 0)
     sepiaKernel.put(1, 0, /* G */0.168, 0.686, 0.349, 0)
     sepiaKernel.put(2, 0, /* B */0.131, 0.534, 0.272, 0)
-    sepiaKernel.put(3, 0, /* A */0.000, 0.000, 0.000, 1)
-
+    sepiaKernel.put(3, 0, /* A */0.000, 0.000, 0.000, 1)	
+	
     this.setState({ ...this.state, interMat : interMat, channelZero : channelZero, channelOne : channelOne, channelTwo : channelTwo,
       maskMat : maskMat, histogramMat : histogramMat, histSize : histSize, ranges : ranges, sepiaKernel : sepiaKernel })
 
@@ -53,26 +53,36 @@ export default class App extends Component<Props> {
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
 
     setTimeout(() => {
-      if (this.scrollView && this.scrollView.current) {
+      if (this.scrollView && this.scrollView.current && Platform.OS != 'ios') {
         this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
       }
     }, 500);
   }
 
   onFrameSize = async(e) => {
-    if (!this.state.fillMat) {
-      const { frameWidth, frameHeight } = JSON.parse(e.payload).frameSize
-      let fillMat = await new Mat(frameWidth,frameHeight,CvType.CV_8UC4).init()
-      this.setState({ ...this.state, frameWidth: frameWidth, frameHeight: frameHeight, fillMat: fillMat, halfHeight : frameHeight / 2.0 })
-    }
+	  if (!this.state.frameWidth && !this.state.frameHeight && !this.state.fillMat) {		
+      	const { frameWidth, frameHeight } = JSON.parse((Platform.OS === 'ios') ? e.nativeEvent.payload : e.payload).frameSize
+      	
+		let fillMat
+		if (Platform.OS === 'ios') {
+		  fillMat = await new Mat(frameHeight,frameWidth,CvType.CV_8UC4).init()
+		}
+		else {
+		  fillMat = await new Mat(frameWidth,frameHeight,CvType.CV_8UC4).init()
+		}
+		
+      	this.setState({ ...this.state, frameWidth: frameWidth, frameHeight: frameHeight, fillMat: fillMat, halfHeight : frameHeight / 2.0 })
+      }
   }
 
   onPayload = async(e) => {
     const hist = (Platform.OS === 'ios') ? e.nativeEvent.payload : e.payload
 
     const { frameWidth, frameHeight, fillMat } = this.state
-
+	
     if (fillMat) {
+      fillMat.setTo(CvScalar.all(0))
+	  
       let thickness = (frameWidth / (this.histSizeNum + 10) / 5)
       if (thickness > 5) {
         thickness = 5
@@ -112,9 +122,10 @@ export default class App extends Component<Props> {
         }
       }
 
+	  this.setState({ ...this.state, overlayMat: fillMat })
       if (this.cvCamera && this.cvCamera.current) {
         // have to do this for performance ...
-        this.cvCamera.current.setOverlay(fillMat)
+        //this.cvCamera.current.setOverlay(fillMat)
       }
     }
   }
@@ -123,10 +134,12 @@ export default class App extends Component<Props> {
     const { fillMat, currMode } = this.state
     if (currMode === 'HISTOGRAM') {
       setTimeout(() => {
+        fillMat.setTo(CvScalar.all(0))
+		this.setState({ ...this.state, overlayMat: fillMat })
+		  
         if (this.cvCamera && this.cvCamera.current) {
           // have to do this for performance ...
-          fillMat.setTo(CvScalar.all(0))
-          this.cvCamera.current.setOverlay(fillMat)
+          //this.cvCamera.current.setOverlay(fillMat)
         }
       }, 500);
     }
@@ -201,6 +214,11 @@ export default class App extends Component<Props> {
       </ScrollView>
       )
   }
+  renderCamera = () => {	  
+  	  return (
+        <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} onFrameSize={this.onFrameSize} overlayInterval={0}/>
+  	  )
+  }
   render() {
     const { interMat, channelZero, channelOne, channelTwo, maskMat, histogramMat, histSize, ranges, halfHeight, fillMat, currMode, frameWidth, frameHeight, sepiaKernel } = this.state
 
@@ -232,12 +250,13 @@ export default class App extends Component<Props> {
 	  
 	const posterScalar = new CvScalar(0, 0, 0, 255)
 	  
+	  if (frameWidth && frameHeight) {
     switch(currMode) {
       default:
       case 'RGBA':
       return (
       <View style={styles.container}>
-        <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+        {this.renderCamera()}
         {this.renderScrollView()}
       </View>
       )
@@ -261,12 +280,17 @@ export default class App extends Component<Props> {
                 <CvInvokeGroup groupid='invokeGroup0'>
                   <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
                   <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
-                  <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} overlayInterval={1000}/>
+          		  <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} 
+  		   	   	    overlayInterval={300}
+  	                onPayload={this.onPayload}
+  	                onFrameSize={this.onFrameSize}
+  	                overlay={this.state.overlayMat}
+  		          />
                 </CvInvokeGroup>
-              </CvInvokeGroup>
-            </CvInvokeGroup>
-          </CvInvokeGroup>
-        </CvInvokeGroup>
+		      </CvInvokeGroup>
+			</CvInvokeGroup>
+	      </CvInvokeGroup>
+		</CvInvokeGroup>
         {this.renderScrollView()}
       </View>
       )
@@ -278,7 +302,7 @@ export default class App extends Component<Props> {
           <CvInvoke func='cvtColor' params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":ColorConv.COLOR_GRAY2BGRA,"p4":4}}/>
           <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
-          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+          {this.renderCamera()}        
         </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
@@ -294,7 +318,7 @@ export default class App extends Component<Props> {
           <CvInvoke func='convertScaleAbs' params={{"p1":interMat,"p2":interMat,"p3":10,"p4":0}}/>
           <CvInvoke func='Sobel' params={{"p1":"grayInnerWindow","p2":interMat,"p3":CvType.CV_8U,"p4":1,"p5":1}}/>
           <CvInvoke inobj='gray' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='grayInnerWindow'/>
-          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+          {this.renderCamera()}
         </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
@@ -305,7 +329,7 @@ export default class App extends Component<Props> {
         <CvInvoke inobj='rbgaInnerWindow' func='release'>
           <CvInvoke func="transform" params={{"p1":"rgbaInnerWindow","p2":"rgbaInnerWindow","p3":sepiaKernel}}>
             <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'>
-              <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+              {this.renderCamera()}
             </CvInvoke>
           </CvInvoke>
         </CvInvoke>
@@ -322,7 +346,7 @@ export default class App extends Component<Props> {
           <CvInvoke func='resize' params={{"p1":"zoomWindow","p2":"zoomCorner","p3":csize,"p4":0,"p5":0,"p6":5}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":zwTop,"p2":zwBottom,"p3":zwLeft,"p4":zwRight}} outobj='zoomWindow'/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":zcTop,"p2":zcBottom,"p3":zcLeft,"p4":zcRight}} outobj='zoomCorner'/>
-          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+          {this.renderCamera()}
         </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
@@ -334,7 +358,7 @@ export default class App extends Component<Props> {
           <CvInvoke func="resize" params={{"p1":interMat,"p2":"rgbaInnerWindow","p3":iwsize,"p4":0.,"p5":0.,"p6":Imgproc.INTER_NEAREST}}>
       	    <CvInvoke func="resize" params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":size0,"p4":0.1,"p5":0.1,"p6":Imgproc.INTER_NEAREST}}>
               <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'>
-                <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+                {this.renderCamera()}
               </CvInvoke>
             </CvInvoke>
 	      </CvInvoke>
@@ -352,15 +376,24 @@ export default class App extends Component<Props> {
           <CvInvoke inobj='rgbaInnerWindow' func='setTo' params={{"p1":posterScalar,"p2":interMat}}/>
           <CvInvoke func='Canny' params={{"p1":"rgbaInnerWindow","p2":interMat,"p3":80,"p4":90}}/>
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
-          <CvCamera style={{ width: '100%', height: '100%', position: 'absolute' }} />
+          {this.renderCamera()}
         </CvInvokeGroup>
         {this.renderScrollView()}
       </View>
       )
-	  
-    }
   }
 }
+  else {
+	  return (
+    <View style={styles.container}>
+      {this.renderCamera()}
+      {this.renderScrollView()}
+    </View>
+  	)
+  }
+    }
+  }
+
 
 const styles = StyleSheet.create({
   container: {
