@@ -150,7 +150,7 @@ export default class App extends Component<Props> {
   }
 
   press1 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
 	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'RGBA' })
 	}
@@ -160,7 +160,7 @@ export default class App extends Component<Props> {
   }
 
   press2 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
   	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'HISTOGRAM' })
   	}
@@ -170,7 +170,7 @@ export default class App extends Component<Props> {
   }
 
   press3 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
   	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'CANNY' })
   	}
@@ -180,7 +180,7 @@ export default class App extends Component<Props> {
   }
 
   press4 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
   	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'SOBEL' })
   	}
@@ -190,7 +190,7 @@ export default class App extends Component<Props> {
   }
 
   press5 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
   	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'SEPIA' })
   	}
@@ -200,7 +200,7 @@ export default class App extends Component<Props> {
   }
 
   press6 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
   	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'ZOOM' })
   	}
@@ -219,7 +219,7 @@ export default class App extends Component<Props> {
   }
 
   press8 = (e) => {
-    this.resetFillMat()
+    //this.resetFillMat()
   	if (Platform.OS === 'ios') {
       this.setState({ ...this.state, currMode : 'POSTERIZE' })
   	}
