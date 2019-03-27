@@ -25,7 +25,7 @@ export default class App extends Component<Props> {
     this.scrollView = React.createRef()
     this.cvCamera = React.createRef()
     this.histSizeNum = 25.0
-    this.state = { scrollleft : width - 64, windowwidth : width, windowheight : height, currMode : 'RGBA' }
+    this.state = { scrolltop : height - 64, scrollleft : width - 64, windowwidth : width, windowheight : height, currMode : 'RGBA' }
   }
 
   componentDidMount = async() => {
@@ -101,12 +101,16 @@ export default class App extends Component<Props> {
       ]
 
       for (let c=0;c < hist.length;c++) {
-        const offset = ((frameWidth - (5*this.histSizeNum + 4*10)*thickness)/2)
+        let offset = ((frameWidth - (5*this.histSizeNum + 4*10)*thickness)/2)
         for (let h=0;h < this.histSizeNum;h++) {
             const x1 = offset + (c * (this.histSizeNum + 10) + h) * thickness
             const x2 = x1
-            const y1 = frameHeight - 1.0
-            const y2 = y1 - 2.0 - hist[c][h]
+            let y1 = frameHeight - 1.0
+            let y2 = y1 - 2.0 - hist[c][h]
+			if (Platform.OS === 'ios') {
+				y1 -= 128
+				y2 -= 128
+			}
             let mP1 = new CvPoint(x1, y1)
             let mP2 = new CvPoint(x2, y2)
             //RNCv.drawLine(histMat,mP1,mP2,RGBScalar,5);
@@ -147,46 +151,94 @@ export default class App extends Component<Props> {
 
   press1 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'POSTERIZE' })
+	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'RGBA' })
+	}
+	else {
+      this.setState({ ...this.state, currMode : 'POSTERIZE' })
+	}
   }
 
   press2 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'PIXELATE' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'HISTOGRAM' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'PIXELATE' })
+  	}
   }
 
   press3 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'ZOOM' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'CANNY' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'ZOOM' })
+  	}
   }
 
   press4 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'SEPIA' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'SOBEL' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'SEPIA' })
+  	}
   }
 
   press5 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'SOBEL' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'SEPIA' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'SOBEL' })
+  	}
   }
 
   press6 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'CANNY' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'ZOOM' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'CANNY' })
+  	}
   }
 
   press7 = (e) => {
-    this.setState({ ...this.state, currMode : 'HISTOGRAM' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'PIXELATE' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'HISTOGRAM' })
+  	}
   }
 
   press8 = (e) => {
     this.resetFillMat()
-    this.setState({ ...this.state, currMode : 'RGBA' })
+  	if (Platform.OS === 'ios') {
+      this.setState({ ...this.state, currMode : 'POSTERIZE' })
+  	}
+  	else {
+      this.setState({ ...this.state, currMode : 'RGBA' })
+  	}
   }
 
   renderScrollView = () => {
+	let svstyle
+	  if (Platform.OS === 'ios') {
+      svstyle = { 'top' : this.state.scrolltop, ...styles.scrollviewios }
+	}
+	else {
+	  svstyle = { 'left' : this.state.scrollleft, ...styles.scrollview }
+	}
+	  
     return(
-      <ScrollView ref={this.scrollView} style={{ 'left' : this.state.scrollleft, ...styles.scrollview }}>
+		<ScrollView ref={this.scrollView} style={svstyle} horizontal={true}>
         <TouchableOpacity  onPress={this.press1} style={styles.to}>
           <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
         </TouchableOpacity>
@@ -213,6 +265,10 @@ export default class App extends Component<Props> {
         </TouchableOpacity>
       </ScrollView>
       )
+  }
+  renderModeLabel = () => {
+  	return <Text style={styles.modeLabel}>Mode: {this.state.currMode}</Text>
+
   }
   renderCamera = () => {	  
   	  return (
@@ -257,6 +313,7 @@ export default class App extends Component<Props> {
       return (
       <View style={styles.container}>
         {this.renderCamera()}
+  		{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -291,6 +348,7 @@ export default class App extends Component<Props> {
 			</CvInvokeGroup>
 	      </CvInvokeGroup>
 		</CvInvokeGroup>
+		{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -304,6 +362,7 @@ export default class App extends Component<Props> {
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
           {this.renderCamera()}        
         </CvInvokeGroup>
+    	{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -320,6 +379,7 @@ export default class App extends Component<Props> {
           <CvInvoke inobj='gray' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='grayInnerWindow'/>
           {this.renderCamera()}
         </CvInvokeGroup>
+    	{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -333,6 +393,7 @@ export default class App extends Component<Props> {
             </CvInvoke>
           </CvInvoke>
         </CvInvoke>
+	    {this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -348,6 +409,7 @@ export default class App extends Component<Props> {
           <CvInvoke inobj='rgba' func='submat' params={{"p1":zcTop,"p2":zcBottom,"p3":zcLeft,"p4":zcRight}} outobj='zoomCorner'/>
           {this.renderCamera()}
         </CvInvokeGroup>
+    	{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -363,6 +425,7 @@ export default class App extends Component<Props> {
             </CvInvoke>
 	      </CvInvoke>
         </CvInvoke>
+		{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -378,6 +441,7 @@ export default class App extends Component<Props> {
           <CvInvoke inobj='rgba' func='submat' params={{"p1":top,"p2":bottom,"p3":left,"p4":right}} outobj='rgbaInnerWindow'/>
           {this.renderCamera()}
         </CvInvokeGroup>
+    	{this.renderModeLabel()}
         {this.renderScrollView()}
       </View>
       )
@@ -400,6 +464,14 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     backgroundColor: 'transparent',
+  },
+  modeLabel: {
+	position: 'absolute',
+	fontSize: 20,
+	color: 'white',
+	backgroundColor: '#00000080',
+	top: 44,
+	right: 10,
   },
   welcome: {
     fontSize: 20,
@@ -427,6 +499,12 @@ const styles = StyleSheet.create({
     right: 0,
     height: 512,
     width: 64,
+    backgroundColor: '#FFF',
+    opacity: 0.5,
+  },
+  scrollviewios: {
+    bottom: 0,
+    height: 64,
     backgroundColor: '#FFF',
     opacity: 0.5,
   },
