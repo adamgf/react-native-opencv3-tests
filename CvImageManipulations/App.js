@@ -53,8 +53,8 @@ export default class App extends Component<Props> {
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
 
     setTimeout(() => {
-      if (this.scrollView && this.scrollView.current && Platform.OS != 'ios') {
-        this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
+      if (this.scrollView && this.scrollView.current) {
+        //this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
       }
     }, 500);
   }
@@ -81,7 +81,9 @@ export default class App extends Component<Props> {
     const { frameWidth, frameHeight, fillMat } = this.state
 	
     if (fillMat) {
-      fillMat.setTo(CvScalar.all(0))
+      if (Platform.OS === 'ios') {
+        fillMat.setTo(CvScalar.all(0))
+	  }
 	  
       let thickness = (frameWidth / (this.histSizeNum + 10) / 5)
       if (thickness > 5) {
@@ -126,10 +128,12 @@ export default class App extends Component<Props> {
         }
       }
 
-	  this.setState({ ...this.state, overlayMat: fillMat })
-      if (this.cvCamera && this.cvCamera.current) {
+      if (Platform.OS === 'ios') {
+	    this.setState({ ...this.state, overlayMat: fillMat })
+	  }
+	  else if (this.cvCamera && this.cvCamera.current) {
         // have to do this for performance ...
-        //this.cvCamera.current.setOverlay(fillMat)
+        this.cvCamera.current.setOverlay(fillMat)
       }
     }
   }
@@ -138,103 +142,74 @@ export default class App extends Component<Props> {
     const { fillMat, currMode } = this.state
     if (currMode === 'HISTOGRAM') {
       setTimeout(() => {
-        fillMat.setTo(CvScalar.all(0))
-		this.setState({ ...this.state, overlayMat: fillMat })
-		  
         if (this.cvCamera && this.cvCamera.current) {
           // have to do this for performance ...
-          //this.cvCamera.current.setOverlay(fillMat)
+          this.cvCamera.current.setOverlay(fillMat)
         }
       }, 500);
     }
   }
 
   press1 = (e) => {
-    //this.resetFillMat()
-	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'RGBA' })
+	if (Platform.OS === 'android') {
+	  this.resetFillMat();
 	}
-	else {
-      this.setState({ ...this.state, currMode : 'POSTERIZE' })
-	}
+    this.setState({ ...this.state, currMode : 'RGBA' })
   }
 
   press2 = (e) => {
-    //this.resetFillMat()
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'HISTOGRAM' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'PIXELATE' })
-  	}
+    this.setState({ ...this.state, currMode : 'HISTOGRAM' })
   }
 
   press3 = (e) => {
-    //this.resetFillMat()
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'CANNY' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'ZOOM' })
-  	}
+    this.setState({ ...this.state, currMode : 'CANNY' })
   }
 
   press4 = (e) => {
-    //this.resetFillMat()
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'SOBEL' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'SEPIA' })
-  	}
+    this.setState({ ...this.state, currMode : 'SOBEL' })
   }
 
   press5 = (e) => {
-    //this.resetFillMat()
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'SEPIA' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'SOBEL' })
-  	}
+    this.setState({ ...this.state, currMode : 'SEPIA' })
   }
 
   press6 = (e) => {
-    //this.resetFillMat()
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'ZOOM' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'CANNY' })
-  	}
+    this.setState({ ...this.state, currMode : 'ZOOM' })
   }
 
   press7 = (e) => {
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'PIXELATE' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'HISTOGRAM' })
-  	}
+    this.setState({ ...this.state, currMode : 'PIXELATE' })
   }
 
   press8 = (e) => {
-    //this.resetFillMat()
-  	if (Platform.OS === 'ios') {
-      this.setState({ ...this.state, currMode : 'POSTERIZE' })
+  	if (Platform.OS === 'android') {
+  	  this.resetFillMat();
   	}
-  	else {
-      this.setState({ ...this.state, currMode : 'RGBA' })
-  	}
+    this.setState({ ...this.state, currMode : 'POSTERIZE' })
   }
 
   renderScrollView = () => {
-	let svstyle
-	  if (Platform.OS === 'ios') {
-      svstyle = { 'top' : this.state.scrolltop, ...styles.scrollviewios }
-	}
-	else {
-	  svstyle = { 'left' : this.state.scrollleft, ...styles.scrollview }
+	let svstyle = { 'top' : this.state.scrolltop, ...styles.scrollview }
+	if (Platform.OS === 'ios') {
+		svstyle = { 'top' : this.state.scrolltop, ...styles.scrollviewios }
 	}
 	  
     return(
@@ -267,7 +242,11 @@ export default class App extends Component<Props> {
       )
   }
   renderModeLabel = () => {
-  	return <Text style={styles.modeLabel}>Mode: {this.state.currMode}</Text>
+	let mlstyle = styles.modelabel
+    if (Platform.OS === 'ios') {
+	  mlstyle = styles.modelabelios
+	}
+  	return <Text style={styles.modelabelios}>Mode: {this.state.currMode}</Text>
 
   }
   renderCamera = () => {	  
@@ -305,6 +284,10 @@ export default class App extends Component<Props> {
 	const iwsize = new CvSize(right - left, bottom - top)  
 	  
 	const posterScalar = new CvScalar(0, 0, 0, 255)
+	let overlayInt = 1000
+	if (Platform.OS === 'ios') {
+	  overlayInt = 300
+	}  
 	  
 	  if (frameWidth && frameHeight) {
     switch(currMode) {
@@ -313,8 +296,8 @@ export default class App extends Component<Props> {
       return (
       <View style={styles.container}>
         {this.renderCamera()}
-  		{this.renderModeLabel()}
         {this.renderScrollView()}
+  		{this.renderModeLabel()}
       </View>
       )
       case 'HISTOGRAM':
@@ -338,7 +321,7 @@ export default class App extends Component<Props> {
                   <CvInvoke func='normalize' params={{"p1":histogramMat,"p2":histogramMat,"p3":halfHeight,"p4":0,"p5":1}} callback='onPayload'/>
                   <CvInvoke func='calcHist' params={{"p1":"rgba","p2":channelZero,"p3":maskMat,"p4":histogramMat,"p5":histSize,"p6":ranges}}/>
           		  <CvCamera ref={this.cvCamera} style={{ width: '100%', height: '100%', position: 'absolute' }} 
-  		   	   	    overlayInterval={300}
+  		   	   	    overlayInterval={overlayInt}
   	                onPayload={this.onPayload}
   	                onFrameSize={this.onFrameSize}
   	                overlay={this.state.overlayMat}
@@ -465,7 +448,15 @@ const styles = StyleSheet.create({
     height: '100%',
     backgroundColor: 'transparent',
   },
-  modeLabel: {
+  modelabel: {
+	position: 'absolute',
+	fontSize: 12,
+	color: 'white',
+	backgroundColor: '#00000080',
+	top: 10,
+	left: '80%',
+  },
+  modelabelios: {
 	position: 'absolute',
 	fontSize: 20,
 	color: 'white',
@@ -494,11 +485,11 @@ const styles = StyleSheet.create({
     margin: 4,
   },
   scrollview: {
-    top: 0,
+    left: 0,
     bottom: 0,
     right: 0,
-    height: 512,
-    width: 64,
+    height: 64,
+    width: 512,
     backgroundColor: '#FFF',
     opacity: 0.5,
   },
