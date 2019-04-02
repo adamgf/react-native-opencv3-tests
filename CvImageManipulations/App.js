@@ -51,12 +51,6 @@ export default class App extends Component<Props> {
 
     DeviceEventEmitter.addListener('onPayload', this.onPayload);
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
-
-    setTimeout(() => {
-      if (this.scrollView && this.scrollView.current) {
-        //this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
-      }
-    }, 500);
   }
 
   onFrameSize = async(e) => {
@@ -128,10 +122,7 @@ export default class App extends Component<Props> {
         }
       }
 
-      if (Platform.OS === 'ios') {
-	    this.setState({ ...this.state, overlayMat: fillMat })
-	  }
-	  else if (this.cvCamera && this.cvCamera.current) {
+      if (this.cvCamera && this.cvCamera.current) {
         // have to do this for performance ...
         this.cvCamera.current.setOverlay(fillMat)
       }
