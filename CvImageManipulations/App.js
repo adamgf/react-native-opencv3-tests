@@ -315,7 +315,6 @@ export default class App extends Component<Props> {
   		   	   	    overlayInterval={overlayInt}
   	                onPayload={this.onPayload}
   	                onFrameSize={this.onFrameSize}
-  	                overlay={this.state.overlayMat}
   		          />
                 </CvInvokeGroup>
 		      </CvInvokeGroup>
