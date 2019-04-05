@@ -17,11 +17,13 @@ export default class App extends Component<Props> {
   constructor(props) {
     super(props)
     this.cvCamera = React.createRef()
+	  this.state = { picuri : '' }
   }
   
   takePicOrRecord = async() => {
   	  const { uri, width, height } = await this.cvCamera.current.takePicture('whatever.jpg')
-	  alert('Picture successfully taken uri is: ' + uri)
+	  //alert('Picture successfully taken uri is: ' + uri)
+	  this.setState({ picuri : uri })
   }
   
   render() {
@@ -35,9 +37,11 @@ export default class App extends Component<Props> {
           style={styles.preview}
           facing={facing}
         />
+		<Image style={styles.pic} source={{uri:`${this.state.picuri}`}} />
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.takePicOrRecord}>
           <Image style={Platform.OS === 'android' ? styles.androidImg : styles.iosImg} source={require('./images/flipCamera.png')}/>
-        </TouchableOpacity>
+		</TouchableOpacity>
+		
       </View>
     );
   }
@@ -58,6 +62,13 @@ const styles = StyleSheet.create({
     backgroundColor : 'transparent',
     width : 50,
     height : 50
+  },
+  pic: {
+    backgroundColor : 'transparent',
+    width : 56,
+    height : 100,
+	left: 0,
+	top: 0,
   },
   iosImg: {
     backgroundColor : 'transparent',
