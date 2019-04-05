@@ -16,12 +16,12 @@ export default class App extends Component<Props> {
 	
   constructor(props) {
     super(props)
-    this.cvCamera = React.createRef()
+    //this.cvCamera = React.createRef()
 	  this.state = { picuri : '' }
   }
   
   takePicOrRecord = async() => {
-  	  const { uri, width, height } = await this.cvCamera.current.takePicture('whatever.jpg')
+  	  const { uri, width, height } = await this.cvCamera.takePicture('whatever.jpg')
 	  //alert('Picture successfully taken uri is: ' + uri)
 	  this.setState({ picuri : uri })
   }
@@ -33,7 +33,7 @@ export default class App extends Component<Props> {
         style={styles.preview}
       >
         <CvCamera
-		  ref={this.cvCamera}
+          ref={ref => { this.cvCamera = ref}}
           style={styles.preview}
           facing={facing}
         />
@@ -64,9 +64,10 @@ const styles = StyleSheet.create({
     height : 50
   },
   pic: {
+	position: 'absolute',
     backgroundColor : 'transparent',
-    width : 56,
-    height : 100,
+    width : 112,
+    height : 200,
 	left: 0,
 	top: 0,
   },
