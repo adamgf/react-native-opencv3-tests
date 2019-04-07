@@ -27,7 +27,12 @@ export default class App extends Component<Props> {
   	  const { uri, width, height } = await this.cvCamera.takePicture('whatever' + this.imgIndex + '.jpg')
 	  this.imgIndex += 1
 	  //alert('Picture successfully taken uri is: ' + uri)
-	  this.setState({ picuri : uri })
+	  if (Platform.OS === 'android') {
+	  	this.setState({ picuri : 'file://' + uri })
+	  }
+	  else {
+	    this.setState({ picuri : uri })
+	  }
   }
   
   render() {
@@ -41,9 +46,9 @@ export default class App extends Component<Props> {
           style={styles.preview}
           facing={facing}
         />
-		<Image style={styles.pic} source={{uri:`${this.state.picuri}`}} />
+		<Image style={Platform.OS === 'android' ? styles.androidPic : styles.iosPic} source={{uri:`${this.state.picuri}`}} />
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.takePicOrRecord}>
-          <Image style={Platform.OS === 'android' ? styles.androidImg : styles.iosImg} source={require('./images/flipCamera.png')}/>
+          <Image style={styles.img} source={require('./images/flipCamera.png')}/>
 		</TouchableOpacity>
 		
       </View>
@@ -61,13 +66,7 @@ const styles = StyleSheet.create({
     bottom : 0,
     position : 'absolute'
   },
-  androidImg: {
-    transform : [{ rotate: '-90deg' }],
-    backgroundColor : 'transparent',
-    width : 50,
-    height : 50
-  },
-  pic: {
+  iosPic: {
 	position: 'absolute',
     backgroundColor : 'transparent',
     width : 112,
@@ -75,7 +74,15 @@ const styles = StyleSheet.create({
 	left: 0,
 	top: 0,
   },
-  iosImg: {
+  androidPic: {
+	position: 'absolute',
+    backgroundColor : 'transparent',
+    width : 200,
+    height : 112,
+	left: 0,
+	bottom: 0,
+  },
+  img: {
     backgroundColor : 'transparent',
     width : 50,
     height : 50
