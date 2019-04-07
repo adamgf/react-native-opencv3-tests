@@ -17,11 +17,15 @@ export default class App extends Component<Props> {
   constructor(props) {
     super(props)
     //this.cvCamera = React.createRef()
-	  this.state = { picuri : '' }
+    const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource')
+	const transUri = resolveAssetSource(require('./images/transparent.gif')).uri
+	this.state = { picuri : transUri }
+	this.imgIndex = 0
   }
   
   takePicOrRecord = async() => {
-  	  const { uri, width, height } = await this.cvCamera.takePicture('whatever.jpg')
+  	  const { uri, width, height } = await this.cvCamera.takePicture('whatever' + this.imgIndex + '.jpg')
+	  this.imgIndex += 1
 	  //alert('Picture successfully taken uri is: ' + uri)
 	  this.setState({ picuri : uri })
   }
