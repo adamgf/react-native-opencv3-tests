@@ -11,19 +11,23 @@
 import React, {Component} from 'react';
 import {StyleSheet, View, TouchableOpacity, Platform, Image} from 'react-native';
 import {CvCamera} from 'react-native-opencv3';
+import Video from 'react-native-video';
+
+var RNFS = require('react-native-fs')
 
 export default class App extends Component<Props> {
 	
   constructor(props) {
     super(props)
-    //this.cvCamera = React.createRef()
     const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource')
 	const transUri = resolveAssetSource(require('./images/transparent.gif')).uri
-	this.state = { picuri : transUri }
+	this.state = { picuri : transUri, videouri : '', showImg : false, recording : false }
 	this.imgIndex = 0
+	this.videoIndex = 0
   }
   
   takePicOrRecord = async() => {
+    if (this.state.showImg) {
   	  const { uri, width, height } = await this.cvCamera.takePicture('whatever' + this.imgIndex + '.jpg')
 	  this.imgIndex += 1
 	  //alert('Picture successfully taken uri is: ' + uri)
@@ -33,6 +37,53 @@ export default class App extends Component<Props> {
 	  else {
 	    this.setState({ picuri : uri })
 	  }
+    }
+	else if (!this.state.recording) {
+      this.cvCamera.startRecording('whatever' + this.videoIndex + '.avi')
+	  this.videoIndex += 1
+	  this.setState({ recording : true })
+	}
+	else if (this.state.recording) {
+	  this.setState({ recording : false })
+	  const { uri, width, height } = await this.cvCamera.stopRecording()
+	  const { size } = await RNFS.stat(uri)
+      alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
+	  if (Platform.OS === 'android') {
+        // avi does not seem to play in react-native-video ??
+	    //this.setState({ videouri : 'file://' + uri})
+	  }
+	  else {
+		this.setState({ videouri: uri })
+	  }
+	}
+  }
+  
+  onBuffer = () => {
+  	alert('Entered onBuffer')
+  }
+  
+  onError = () => {
+  	alert('Entered onError')
+  }
+  
+  renderImageOrVideo = () => {	  	
+    if (this.state.showImg) {
+	  return (
+	    <Image style={Platform.OS === 'android' ? styles.androidPic : styles.iosPic} source={{uri:`${this.state.picuri}`}} />	
+	  )
+	}
+	else if (this.state.videouri) {
+	 return (
+	   <Video source={{uri: `${this.state.videouri}`}}   // Can be a URL or a local file.
+			       ref={(ref) => { this.player = ref }}                                      // Store reference
+			       onBuffer={this.onBuffer}                // Callback when remote video is buffering
+			       onError={this.videoError}               // Callback when video cannot be loaded
+			       style={Platform.OS === 'android' ? styles.androidPic : styles.iosPic} />
+	  )
+	}
+	else {
+      return null
+	}
   }
   
   render() {
@@ -42,17 +93,16 @@ export default class App extends Component<Props> {
         style={styles.preview}
       >
         <CvCamera
-          ref={ref => { this.cvCamera = ref}}
+          ref={ref => { this.cvCamera = ref }}
           style={styles.preview}
           facing={facing}
         />
-		<Image style={Platform.OS === 'android' ? styles.androidPic : styles.iosPic} source={{uri:`${this.state.picuri}`}} />
+		{this.renderImageOrVideo()}
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.takePicOrRecord}>
           <Image style={styles.img} source={require('./images/flipCamera.png')}/>
 		</TouchableOpacity>
-		
       </View>
-    );
+    )
   }
 }
 
@@ -64,7 +114,7 @@ const styles = StyleSheet.create({
     left : 0,
     right : 0,
     bottom : 0,
-    position : 'absolute'
+    position : 'absolute',
   },
   iosPic: {
 	position: 'absolute',
