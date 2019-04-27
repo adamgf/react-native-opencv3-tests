@@ -50,7 +50,7 @@ export default class App extends Component<Props> {
       alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
 	  if (Platform.OS === 'android') {
         // avi does not seem to play in react-native-video ??
-	    //this.setState({ videouri : 'file://' + uri})
+	    // this.setState({ videouri : 'file://' + uri})
 	  }
 	  else {
 		this.setState({ videouri: uri })
