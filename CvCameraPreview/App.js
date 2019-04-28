@@ -9,7 +9,7 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, View, TouchableOpacity, Platform, Image} from 'react-native';
+import {StyleSheet, View, TouchableOpacity, Platform, Image, Switch} from 'react-native';
 import {CvCamera} from 'react-native-opencv3';
 import Video from 'react-native-video';
 
@@ -21,9 +21,17 @@ export default class App extends Component<Props> {
     super(props)
     const resolveAssetSource = require('react-native/Libraries/Image/resolveAssetSource')
 	const transUri = resolveAssetSource(require('./images/transparent.gif')).uri
-	this.state = { picuri : transUri, videouri : '', showImg : false, recording : false }
+	this.state = { picuri : transUri, videouri : '', showImg : false, recording : false, showRec : true, switchValue : true }
 	this.imgIndex = 0
 	this.videoIndex = 0
+    // Change the state every second or the time given by User.
+    setInterval(() => {
+      this.setState(previousState => {
+        return { showRec: !previousState.showRec };
+      });
+    }, 
+    // Define any blinking time.
+    500);
   }
   
   uuidv4 = () => {
@@ -35,7 +43,7 @@ export default class App extends Component<Props> {
   
   takePicOrRecord = async() => {
     if (this.state.showImg) {
-  	  const { uri, width, height } = await this.cvCamera.takePicture('ocvpic' + this.imgIndex + '.jpg')
+  	  const { uri, width, height } = await this.cvCamera.takePicture('ocvpic-' + this.imgIndex + '.jpg')
 	  this.imgIndex += 1
 	  //alert('Picture successfully taken uri is: ' + uri)
 	  if (Platform.OS === 'android') {
@@ -65,10 +73,10 @@ export default class App extends Component<Props> {
 	  this.setState({ recording : false })
 	  const { uri, width, height } = await this.cvCamera.stopRecording()
 	  const { size } = await RNFS.stat(uri)
-      //alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
 	  if (Platform.OS === 'android') {
         // avi does not seem to play in react-native-video ??
-	    // this.setState({ videouri : 'file://' + uri})
+        alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
+	    //this.setState({ videouri : 'file://' + uri})
 	  }
 	  else {
 		this.setState({ videouri: uri })
@@ -103,21 +111,41 @@ export default class App extends Component<Props> {
       return null
 	}
   }
-  
+  renderRec = () => {
+	if (this.state.recording && this.state.showRec) {
+	  return (
+		<Image style={Platform.OS === 'android' ? styles.androidRec : styles.iosRec} source={require('./images/rec.png')}/>
+	  )
+	}
+	else {
+	  return null	
+	}
+  }
+  toggleSwitch = (value) => {
+	  if (this.state.switchValue) {
+	  	alert('Switching capture mode from video to picture.')
+	  }
+	  else {
+	  	alert('Switching capture mode from picture to video.')
+	  }
+	  this.setState({ switchValue : !this.state.switchValue, showImg : !this.state.showImg })
+  }
   render() {
     const { facing } = 'back';
     return (
       <View
         style={styles.preview}
-      >
+      >		
         <CvCamera
           ref={ref => { this.cvCamera = ref }}
           style={styles.preview}
           facing={facing}
         />
-		{this.renderImageOrVideo()}
+  		{this.renderImageOrVideo()}
+		{this.renderRec()}
+        <Switch style={Platform.OS === 'android' ? styles.androidSwitch : styles.iosSwitch} onValueChange={this.toggleSwitch} value={this.state.switchValue}/>
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.takePicOrRecord}>
-          <Image style={styles.img} source={require('./images/flipCamera.png')}/>
+          <Image style={styles.img} source={require('./images/recordButton.png')}/>
 		</TouchableOpacity>
       </View>
     )
@@ -179,4 +207,27 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center'
   },
+  androidRec: {
+    transform : [{ rotate: '-90deg' }],	
+	position: 'absolute',
+	top: '45%',
+	bottom: '45%',
+	left: 0,
+  },
+  iosRec: {
+	position: 'absolute',
+	left: '45%',
+	right: '45%',
+	top: 0,
+  },
+  androidSwitch: {
+	position: 'absolute',
+	top: '70%',
+	left: 0,
+  },
+  iosSwitch: {
+	position: 'absolute',
+	left: '70%',
+	top: 0,
+  }
 });
