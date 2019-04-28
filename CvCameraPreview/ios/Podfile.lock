@@ -9,6 +9,11 @@ PODS:
   - libopencv-contrib (3.4.1)
   - React (0.57.8):
     - React/Core (= 0.57.8)
+  - react-native-video (4.4.1):
+    - React
+    - react-native-video/Video (= 4.4.1)
+  - react-native-video/Video (4.4.1):
+    - React
   - React/Core (0.57.8):
     - yoga (= 0.57.8.React)
   - React/CxxBridge (0.57.8):
@@ -56,6 +61,7 @@ DEPENDENCIES:
   - DoubleConversion (from `../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - Folly (from `../node_modules/react-native/third-party-podspecs/Folly.podspec`)
   - glog (from `../node_modules/react-native/third-party-podspecs/glog.podspec`)
+  - react-native-video (from `../node_modules/react-native-video/react-native-video.podspec`)
   - React/Core (from `../node_modules/react-native`)
   - React/CxxBridge (from `../node_modules/react-native`)
   - React/cxxreact (from `../node_modules/react-native`)
@@ -84,6 +90,8 @@ EXTERNAL SOURCES:
     :podspec: "../node_modules/react-native/third-party-podspecs/glog.podspec"
   React:
     :path: "../node_modules/react-native"
+  react-native-video:
+    :path: "../node_modules/react-native-video/react-native-video.podspec"
   RNFS:
     :path: "../node_modules/react-native-fs"
   RNOpencv3:
@@ -98,10 +106,11 @@ SPEC CHECKSUMS:
   glog: e8acf0ebbf99759d3ff18c86c292a5898282dcde
   libopencv-contrib: 01e8f05daf0e93e3f5fa395590fcf41ef312bef3
   React: adbac0757ce35e92fbd447ab98c810209d27d9b0
+  react-native-video: 481d46031d2a55c2b6fa8aaa9e9ad4a9b215aca5
   RNFS: c9bbde46b0d59619f8e7b735991c60e0f73d22c1
   RNOpencv3: 919abd4b0e4c180ff6cd5211af5dcc8cd371fd3f
   yoga: 74cdf036c30820443b25ade59916236b1e95ee93
 
-PODFILE CHECKSUM: bc13936048c11a5a7180a2b6a4cc97c77dc040a4
+PODFILE CHECKSUM: 5455fde708a5c5095e7c05464941c2c3405cccdf
 
 COCOAPODS: 1.6.1

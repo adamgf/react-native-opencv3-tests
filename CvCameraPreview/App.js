@@ -26,9 +26,16 @@ export default class App extends Component<Props> {
 	this.videoIndex = 0
   }
   
+  uuidv4 = () => {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+      var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
+      return v.toString(16);
+    });
+  }
+  
   takePicOrRecord = async() => {
     if (this.state.showImg) {
-  	  const { uri, width, height } = await this.cvCamera.takePicture('whatever' + this.imgIndex + '.jpg')
+  	  const { uri, width, height } = await this.cvCamera.takePicture('ocvpic' + this.imgIndex + '.jpg')
 	  this.imgIndex += 1
 	  //alert('Picture successfully taken uri is: ' + uri)
 	  if (Platform.OS === 'android') {
@@ -39,7 +46,18 @@ export default class App extends Component<Props> {
 	  }
     }
 	else if (!this.state.recording) {
-      this.cvCamera.startRecording('whatever' + this.videoIndex + '.avi')
+	  filenameStr = 'ocvmovie-' + this.uuidv4()
+	  if (Platform.OS === 'android') {
+		filenameStr += '.avi'
+	  }
+	  else {
+		filenameStr += '.m4v'
+	  }
+	  let itexists = await RNFS.exists(filenameStr)
+	  if (itexists) {
+	  	await RNFS.unlink(filenameStr)
+	  }
+      this.cvCamera.startRecording(filenameStr)
 	  this.videoIndex += 1
 	  this.setState({ recording : true })
 	}
@@ -47,7 +65,7 @@ export default class App extends Component<Props> {
 	  this.setState({ recording : false })
 	  const { uri, width, height } = await this.cvCamera.stopRecording()
 	  const { size } = await RNFS.stat(uri)
-      alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
+      //alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
 	  if (Platform.OS === 'android') {
         // avi does not seem to play in react-native-video ??
 	    // this.setState({ videouri : 'file://' + uri})
@@ -59,7 +77,7 @@ export default class App extends Component<Props> {
   }
   
   onBuffer = () => {
-  	alert('Entered onBuffer')
+  	//alert('Entered onBuffer')
   }
   
   onError = () => {

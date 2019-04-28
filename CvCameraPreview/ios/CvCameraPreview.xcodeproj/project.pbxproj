@@ -48,7 +48,6 @@
 		50FC7471219964CD00A48FE3 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50FC7467219964CC00A48FE3 /* CoreImage.framework */; };
 		6D7FDF455D20DF00F647EB03 /* libPods-CvCameraPreview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4D9011424520F51360BADD0C /* libPods-CvCameraPreview.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
-		9E5ECB5B4B8849F7BB90681F /* libRNVideoPlayer.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 06C0BB794A4B47D4AC23A096 /* libRNVideoPlayer.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		D1F85D7CA61E45EFB1F23DD2 /* libRNOpencv3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D83278076E824A14B19ACE31 /* libRNOpencv3.a */; };
 /* End PBXBuildFile section */
@@ -292,13 +291,6 @@
 			remoteGlobalIDString = 3D3CD9181DE5FBD800167DC4;
 			remoteInfo = "jschelpers-tvOS";
 		};
-		502996CD225ACB3400F13310 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BCB8C3FD39B44512AE0D4171 /* RNVideoPlayer.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 84BF382F1DBF52980044F03A;
-			remoteInfo = RNVideoPlayer;
-		};
 		50FC7414219938F400A48FE3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 451B67AE547B41F1818E6F6A /* RNOpencv3.xcodeproj */;
@@ -383,7 +375,6 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		BCB8C3FD39B44512AE0D4171 /* RNVideoPlayer.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVideoPlayer.xcodeproj; path = "../node_modules/react-native-native-video-player/ios/RNVideoPlayer.xcodeproj"; sourceTree = "<group>"; };
 		D83278076E824A14B19ACE31 /* libRNOpencv3.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOpencv3.a; sourceTree = "<group>"; };
 		ED65BE6358839B3F14E575DF /* Pods-CvCameraPreview.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvCameraPreview.release.xcconfig"; path = "Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview.release.xcconfig"; sourceTree = "<group>"; };
 		FFBEFEA9D39C161402C2DCFC /* Pods-CvCameraPreview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CvCameraPreview.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CvCameraPreview/Pods-CvCameraPreview.debug.xcconfig"; sourceTree = "<group>"; };
@@ -426,7 +417,6 @@
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				D1F85D7CA61E45EFB1F23DD2 /* libRNOpencv3.a in Frameworks */,
 				6D7FDF455D20DF00F647EB03 /* libPods-CvCameraPreview.a in Frameworks */,
-				9E5ECB5B4B8849F7BB90681F /* libRNVideoPlayer.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -591,14 +581,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		502996CA225ACB3300F13310 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				502996CE225ACB3400F13310 /* libRNVideoPlayer.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		50FC73EB219938F400A48FE3 /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
@@ -650,7 +632,6 @@
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
 				451B67AE547B41F1818E6F6A /* RNOpencv3.xcodeproj */,
-				BCB8C3FD39B44512AE0D4171 /* RNVideoPlayer.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -820,6 +801,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -878,10 +860,6 @@
 				{
 					ProductGroup = 50FC7411219938F400A48FE3 /* Products */;
 					ProjectRef = 451B67AE547B41F1818E6F6A /* RNOpencv3.xcodeproj */;
-				},
-				{
-					ProductGroup = 502996CA225ACB3300F13310 /* Products */;
-					ProjectRef = BCB8C3FD39B44512AE0D4171 /* RNVideoPlayer.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1119,13 +1097,6 @@
 			remoteRef = 3DAD3EAE1DF850E9000B6D8A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		502996CE225ACB3400F13310 /* libRNVideoPlayer.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNVideoPlayer.a;
-			remoteRef = 502996CD225ACB3400F13310 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		50FC7415219938F400A48FE3 /* libRNOpencv3.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1354,7 +1325,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = CvCameraPreviewTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1383,7 +1353,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = CvCameraPreviewTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1414,7 +1383,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = CvCameraPreview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1439,7 +1407,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = CvCameraPreview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1470,7 +1437,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = "CvCameraPreview-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1507,7 +1473,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = "CvCameraPreview-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1542,7 +1507,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = "CvCameraPreview-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
@@ -1577,7 +1541,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-opencv3/ios",
-					"$(SRCROOT)/../node_modules/react-native-native-video-player/ios/RNVideoPlayer",
 				);
 				INFOPLIST_FILE = "CvCameraPreview-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
