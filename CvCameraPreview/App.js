@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     width : 112,
     height : 200,
 	left: 0,
-	top: 0,
+	top: '10%',
   },
   androidPic: {
 	position: 'absolute',
@@ -218,16 +218,16 @@ const styles = StyleSheet.create({
 	position: 'absolute',
 	left: '45%',
 	right: '45%',
-	top: 0,
+	top: '10%',
   },
   androidSwitch: {
 	position: 'absolute',
-	top: '70%',
+	top: '85%',
 	left: 0,
   },
   iosSwitch: {
 	position: 'absolute',
-	left: '70%',
-	top: 0,
+	left: '85%',
+	top: '10%',
   }
 });
