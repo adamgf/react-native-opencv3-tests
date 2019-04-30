@@ -10,7 +10,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, View, TouchableOpacity, Platform, Image, Switch} from 'react-native';
-import {CvCamera} from 'react-native-opencv3';
+import {CvCamera, CvScalar, Mat, CvInvoke, CvInvokeGroup} from 'react-native-opencv3';
 import Video from 'react-native-video';
 
 var RNFS = require('react-native-fs')
@@ -32,6 +32,11 @@ export default class App extends Component<Props> {
     }, 
     // Define any blinking time.
     500);
+  }
+  
+  componentDidMount = async() => {
+    this.interMat = await new Mat().init()
+  	
   }
   
   uuidv4 = () => {
@@ -76,10 +81,10 @@ export default class App extends Component<Props> {
 	  if (Platform.OS === 'android') {
         // avi does not seem to play in react-native-video ??
         alert('Video uri is: ' + uri + ' width is: ' + width + ' height is: ' + height + ' size is: ' + size)
-	    //this.setState({ videouri : 'file://' + uri})
+	    this.setState({ videouri : 'file://' + uri})
 	  }
 	  else {
-		this.setState({ videouri: uri })
+		this.setState({ videouri : uri })
 	  }
 	}
   }
@@ -111,6 +116,7 @@ export default class App extends Component<Props> {
       return null
 	}
   }
+  
   renderRec = () => {
 	if (this.state.recording && this.state.showRec) {
 	  return (
@@ -121,6 +127,7 @@ export default class App extends Component<Props> {
 	  return null	
 	}
   }
+  
   toggleSwitch = (value) => {
 	  if (this.state.switchValue) {
 	  	alert('Switching capture mode from video to picture.')
@@ -130,17 +137,25 @@ export default class App extends Component<Props> {
 	  }
 	  this.setState({ switchValue : !this.state.switchValue, showImg : !this.state.showImg })
   }
+  
   render() {
-    const { facing } = 'back';
+    const { facing } = 'back'
+	const posterScalar = new CvScalar(0, 0, 0, 255)
     return (
       <View
         style={styles.preview}
-      >		
-        <CvCamera
-          ref={ref => { this.cvCamera = ref }}
-          style={styles.preview}
-          facing={facing}
-        />
+      >
+        <CvInvokeGroup groupid='zeeGrup'>
+          <CvInvoke func='convertScaleAbs' params={{"p1":this.interMat,"p2":"rgba","p3":16,"p4":0}}/>
+          <CvInvoke func='convertScaleAbs' params={{"p1":"rgba","p2":this.interMat,"p3":1./16,"p4":0}}/>
+          <CvInvoke inobj='rgba' func='setTo' params={{"p1":posterScalar,"p2":this.interMat}}/>
+          <CvInvoke func='Canny' params={{"p1":"rgba","p2":this.interMat,"p3":80,"p4":90}}/>		
+          <CvCamera
+            ref={ref => { this.cvCamera = ref }}
+            style={styles.preview}
+            facing={facing}
+          />
+		</CvInvokeGroup>
   		{this.renderImageOrVideo()}
 		{this.renderRec()}
         <Switch style={Platform.OS === 'android' ? styles.androidSwitch : styles.iosSwitch} onValueChange={this.toggleSwitch} value={this.state.switchValue}/>
@@ -189,7 +204,7 @@ const styles = StyleSheet.create({
     right : 0,
     width: '10%',
     position : 'absolute',
-    backgroundColor : '#FFF',
+    backgroundColor : 'transparent',
     opacity : 0.75,
     display : 'flex',
     justifyContent : 'center',
@@ -201,7 +216,7 @@ const styles = StyleSheet.create({
     bottom : 0,
     height : '10%',
     position : 'absolute',
-    backgroundColor : '#FFF',
+    backgroundColor : 'transparent',
     opacity : 0.75,
     display: 'flex',
     justifyContent: 'center',
@@ -221,8 +236,9 @@ const styles = StyleSheet.create({
 	top: '10%',
   },
   androidSwitch: {
+    transform : [{ rotate: '-90deg' }],	
 	position: 'absolute',
-	top: '85%',
+	bottom: '85%',
 	left: 0,
   },
   iosSwitch: {

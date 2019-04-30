@@ -1,4 +1,4 @@
-package org.opencv.reactnative.samples.cvcamerapreview;
+package com.adamfreeman.rnocv3.samples.cvcamerapreview;
 
 import com.facebook.react.ReactActivity;
 

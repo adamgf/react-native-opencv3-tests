@@ -1,11 +1,11 @@
-package org.opencv.reactnative.samples.cvcamerapreview;
+package com.adamfreeman.rnocv3.samples.cvcamerapreview;
 
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
 import com.brentvatne.react.ReactVideoPackage;
+import com.adamfreeman.rnocv3.RNOpencv3Package;
 import com.rnfs.RNFSPackage;
-import org.opencv.reactnative.RNOpencv3Package;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
@@ -27,8 +27,8 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new ReactVideoPackage(),
-            new RNFSPackage(),
-            new RNOpencv3Package()
+            new RNOpencv3Package(),
+            new RNFSPackage()
       );
     }
 
