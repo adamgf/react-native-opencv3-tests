@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-  package="org.opencv.reactnative.samples.simplegreyscale">
+  package="com.adamfreeman.rnocv3.samples.simplegreyscale">
 
     <uses-permission android:name="android.permission.INTERNET" />
 

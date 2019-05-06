@@ -1,4 +1,4 @@
-package org.opencv.reactnative.samples.simplegreyscale;
+package com.adamfreeman.rnocv3.samples.simplegreyscale;
 
 import com.facebook.react.ReactActivity;
 
