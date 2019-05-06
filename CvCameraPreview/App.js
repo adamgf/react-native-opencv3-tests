@@ -160,7 +160,7 @@ export default class App extends Component<Props> {
 		{this.renderRec()}
         <Switch style={Platform.OS === 'android' ? styles.androidSwitch : styles.iosSwitch} onValueChange={this.toggleSwitch} value={this.state.switchValue}/>
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.takePicOrRecord}>
-          <Image style={styles.img} source={require('./images/recordButton.png')}/>
+          <Image style={Platform.OS === 'android' ? styles.androidImg : styles.iosImg} source={require('./images/recordButton.png')}/>
 		</TouchableOpacity>
       </View>
     )
@@ -193,16 +193,21 @@ const styles = StyleSheet.create({
 	left: 0,
 	bottom: 0,
   },
-  img: {
+  iosImg: {
     backgroundColor : 'transparent',
-    width : 50,
-    height : 50
+    width : 75,
+    height : 75,
+  },
+  androidImg: {
+    backgroundColor : 'transparent',
+    width : 75,
+    height : 75,
   },
   androidButton: {
     top : 0,
     bottom : 0,
-    right : 0,
-    width: '10%',
+    right : 40,
+    width: 75,
     position : 'absolute',
     backgroundColor : 'transparent',
     opacity : 0.75,
@@ -213,8 +218,8 @@ const styles = StyleSheet.create({
   iosButton: {
     left : 0,
     right : 0,
-    bottom : 0,
-    height : '10%',
+    bottom : 40,
+    height : 75,
     position : 'absolute',
     backgroundColor : 'transparent',
     opacity : 0.75,
