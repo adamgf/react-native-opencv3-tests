@@ -25,7 +25,7 @@ export default class App extends Component<Props> {
     this.scrollView = React.createRef()
     this.cvCamera = React.createRef()
     this.histSizeNum = 25.0
-    this.state = { scrolltop : height - 64, scrollleft : width - 64, windowwidth : width, windowheight : height, currMode : 'RGBA' }
+    this.state = { scrolltop : height - 94, scrollleft : width - 64, windowwidth : width, windowheight : height, currMode : 'RGBA' }
   }
 
   componentDidMount = async() => {
@@ -51,6 +51,14 @@ export default class App extends Component<Props> {
 
     DeviceEventEmitter.addListener('onPayload', this.onPayload);
     DeviceEventEmitter.addListener('onFrameSize', this.onFrameSize);
+	
+	if (Platform.OS === 'android') {
+	    setTimeout(() => {
+	      if (this.scrollView && this.scrollView.current) {
+	        this.scrollView.current.scrollTo({ x : 0, y : this.state.windowheight, animated : false })
+	      }
+	    }, 500);
+	}
   }
 
   onFrameSize = async(e) => {
@@ -135,6 +143,7 @@ export default class App extends Component<Props> {
       setTimeout(() => {
         if (this.cvCamera && this.cvCamera.current) {
           // have to do this for performance ...
+          fillMat.setTo(CvScalar.all(0))
           this.cvCamera.current.setOverlay(fillMat)
         }
       }, 500);
@@ -142,92 +151,110 @@ export default class App extends Component<Props> {
   }
 
   press1 = (e) => {
+	var mode = 'RGBA'
 	if (Platform.OS === 'android') {
 	  this.resetFillMat();
+	  mode = 'POSTERIZE'
 	}
-    this.setState({ ...this.state, currMode : 'RGBA' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press2 = (e) => {
+	var mode = 'HISTOGRAM'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'PIXELATE'
   	}
-    this.setState({ ...this.state, currMode : 'HISTOGRAM' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press3 = (e) => {
+	var mode = 'CANNY'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'ZOOM'
   	}
-    this.setState({ ...this.state, currMode : 'CANNY' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press4 = (e) => {
+	var mode = 'SOBEL'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'SEPIA'
   	}
-    this.setState({ ...this.state, currMode : 'SOBEL' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press5 = (e) => {
+	var mode = 'SEPIA'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'SOBEL'
   	}
-    this.setState({ ...this.state, currMode : 'SEPIA' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press6 = (e) => {
+	var mode = 'ZOOM'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'CANNY'
   	}
-    this.setState({ ...this.state, currMode : 'ZOOM' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press7 = (e) => {
+	var mode = 'PIXELATE'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'HISTOGRAM'
   	}
-    this.setState({ ...this.state, currMode : 'PIXELATE' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   press8 = (e) => {
+	var mode = 'POSTERIZE'
   	if (Platform.OS === 'android') {
   	  this.resetFillMat();
+	  mode = 'RGBA'
   	}
-    this.setState({ ...this.state, currMode : 'POSTERIZE' })
+    this.setState({ ...this.state, currMode : mode })
   }
 
   renderScrollView = () => {
-	let svstyle = { 'top' : this.state.scrolltop, ...styles.scrollview }
+	let svstyle = { 'left' : this.state.scrollleft, ...styles.scrollview }
+	var horizontalVal = false
 	if (Platform.OS === 'ios') {
 		svstyle = { 'top' : this.state.scrolltop, ...styles.scrollviewios }
+		horizontalVal = true
 	}
 	  
     return(
-		<ScrollView ref={this.scrollView} style={svstyle} horizontal={true}>
+		<ScrollView ref={this.scrollView} style={svstyle} horizontal={horizontalVal}>
         <TouchableOpacity  onPress={this.press1} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press2} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press3} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press4} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press5} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press6} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press7} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
         <TouchableOpacity  onPress={this.press8} style={styles.to}>
-          <Image source={require('./images/react-native-icon.png')} style={styles.scrollimg}/>
+          <Image source={require('./images/react-native-icon.png')} style={Platform.OS === 'android' ? styles.scrollimgAndroid : styles.scrollimg}/>
         </TouchableOpacity>
       </ScrollView>
       )
@@ -237,7 +264,7 @@ export default class App extends Component<Props> {
     if (Platform.OS === 'ios') {
 	  mlstyle = styles.modelabelios
 	}
-  	return <Text style={styles.modelabelios}>Mode: {this.state.currMode}</Text>
+  	return <Text style={mlstyle}>Mode: {this.state.currMode}</Text>
 
   }
   renderCamera = () => {	  
@@ -439,12 +466,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
   },
   modelabel: {
+    transform : [{ rotate: '-90deg' }],	
 	position: 'absolute',
-	fontSize: 12,
+	fontSize: 16,
 	color: 'white',
 	backgroundColor: '#00000080',
-	top: 10,
-	left: '80%',
+	left: -20,
+	bottom: 70,
+	width: 140,
   },
   modelabelios: {
 	position: 'absolute',
@@ -474,19 +503,25 @@ const styles = StyleSheet.create({
     height: 56,
     margin: 4,
   },
+  scrollimgAndroid: {
+	width: 56,
+	height: 56,
+	margin: 4,
+    transform : [{ rotate: '-90deg' }],	
+  },
   scrollview: {
-    left: 0,
-    bottom: 0,
     right: 0,
-    height: 64,
-    width: 512,
-    backgroundColor: '#FFF',
-    opacity: 0.5,
+    bottom: 0,
+    top: 0,
+    height: 512,
+    width: 64,
+    backgroundColor: '#000',
+    opacity: 0.65,
   },
   scrollviewios: {
-    bottom: 0,
+    bottom: 30,
     height: 64,
-    backgroundColor: '#FFF',
-    opacity: 0.5,
+    backgroundColor: '#000',
+    opacity: 0.65,
   },
 });

@@ -787,6 +787,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1397,7 +1398,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvImageManipulations;
 				PRODUCT_NAME = CvImageManipulations;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1422,7 +1423,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvImageManipulations;
 				PRODUCT_NAME = CvImageManipulations;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1456,7 +1457,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.CvImageManipulations-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adamfreeman.rnocv3.samples.CvImageManipulations-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1492,7 +1493,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.CvImageManipulations-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.adamfreeman.rnocv3.samples.CvImageManipulations-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;

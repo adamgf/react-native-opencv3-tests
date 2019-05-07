@@ -1366,7 +1366,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.opencv.reactnative.samples.CvFaceLandmarks;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvFaceLandmarks;
 				PRODUCT_NAME = CvFaceLandmarks;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1390,7 +1390,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.opencv.reactnative.samples.CvFaceLandmarks;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvFaceLandmarks;
 				PRODUCT_NAME = CvFaceLandmarks;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="org.opencv.reactnative.samples.cvfacedetection">
+    package="com.adamfreeman.rnocv3.samples.cvfacedetection">
 
     <supports-screens android:resizeable="true"
         android:smallScreens="true"

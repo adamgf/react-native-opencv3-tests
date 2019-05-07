@@ -1357,7 +1357,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.opencv.reactnative.samples.CvFaceDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvFaceDetection;
 				PRODUCT_NAME = CvFaceDetection;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1382,7 +1382,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.opencv.reactnative.samples.CvFaceDetection;
+				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvFaceDetection;
 				PRODUCT_NAME = CvFaceDetection;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
