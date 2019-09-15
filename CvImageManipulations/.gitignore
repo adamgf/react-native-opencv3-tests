@@ -1,13 +1,11 @@
 # OSX
 #
 .DS_Store
-ios/Pods/
 
 # Xcode
 #
-ios/Pods
-ios/Index
 build/
+Index/
 *.pbxuser
 !default.pbxuser
 *.mode1v3
@@ -57,3 +55,6 @@ buck-out/
 
 # Bundle artifact
 *.jsbundle
+
+# CocoaPods
+/ios/Pods/

@@ -1,7 +1,6 @@
 package com.adamfreeman.rnocv3.samples.cvfacedetection;
 
 import com.facebook.react.ReactActivity;
-import android.view.WindowManager;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,7 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        //getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         return "CvFaceDetection";
     }
 }

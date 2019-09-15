@@ -128,23 +128,12 @@ export default class App extends Component<Props> {
 	}
   }
   
-  toggleSwitch = (value) => {
-	  if (this.state.switchValue) {
-	  	alert('Switching capture mode from video to picture.')
-	  }
-	  else {
-	  	alert('Switching capture mode from picture to video.')
-	  }
-	  this.setState({ switchValue : !this.state.switchValue, showImg : !this.state.showImg })
-  }
-  
-  render() {
-    const { facing } = 'back'
-	const posterScalar = new CvScalar(0, 0, 0, 255)
-    return (
-      <View
-        style={styles.preview}
-      >
+  renderCameraView = () => {
+	  //alert('this.interMat is: ' + this.interMat)
+      const { facing } = 'back'
+	  const posterScalar = new CvScalar(0, 0, 0, 255)
+	  if (this.interMat) {
+	  	return (
         <CvInvokeGroup groupid='zeeGrup'>
           <CvInvoke func='convertScaleAbs' params={{"p1":this.interMat,"p2":"rgba","p3":16,"p4":0}}/>
           <CvInvoke func='convertScaleAbs' params={{"p1":"rgba","p2":this.interMat,"p3":1./16,"p4":0}}/>
@@ -156,6 +145,35 @@ export default class App extends Component<Props> {
             facing={facing}
           />
 		</CvInvokeGroup>
+	  	)
+	  }
+	  else {
+	  	return (
+          <CvCamera
+            ref={ref => { this.cvCamera = ref }}
+            style={styles.preview}
+            facing={facing}
+          />
+	  	)
+	  }
+  }
+  
+  toggleSwitch = (value) => {
+	  if (this.state.switchValue) {
+	  	alert('Switching capture mode from video to picture.')
+	  }
+	  else {
+	  	alert('Switching capture mode from picture to video.')
+	  }
+	  this.setState({ switchValue : !this.state.switchValue, showImg : !this.state.showImg })
+  }
+  
+  render() {
+    return (
+      <View
+        style={styles.preview}
+      >
+		{this.renderCameraView()}
   		{this.renderImageOrVideo()}
 		{this.renderRec()}
         <Switch style={Platform.OS === 'android' ? styles.androidSwitch : styles.iosSwitch} onValueChange={this.toggleSwitch} value={this.state.switchValue}/>
