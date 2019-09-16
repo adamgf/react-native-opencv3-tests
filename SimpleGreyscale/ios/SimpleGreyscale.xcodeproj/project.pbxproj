@@ -37,13 +37,6 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "SimpleGreyscale-tvOS";
 		};
-		50637144231A04AD00347395 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 50637140231A04AD00347395 /* RNOpencv3.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNOpencv3;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +58,6 @@
 		32B4DCB6EC655D75907EBE64 /* libPods-SimpleGreyscaleTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SimpleGreyscaleTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		389CEE8F5123FF7B32C9DACF /* Pods-SimpleGreyscale-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleGreyscale-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SimpleGreyscale-tvOS/Pods-SimpleGreyscale-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4CBC450D86D5D4010C3B0433 /* Pods-SimpleGreyscale-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleGreyscale-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleGreyscale-tvOSTests/Pods-SimpleGreyscale-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		50637140231A04AD00347395 /* RNOpencv3.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOpencv3.xcodeproj; path = "../node_modules/react-native-opencv3/ios/RNOpencv3.xcodeproj"; sourceTree = "<group>"; };
 		611449E4472C71574C901762 /* Pods-SimpleGreyscaleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleGreyscaleTests.release.xcconfig"; path = "Target Support Files/Pods-SimpleGreyscaleTests/Pods-SimpleGreyscaleTests.release.xcconfig"; sourceTree = "<group>"; };
 		7367FCD2F73951D522584E17 /* Pods-SimpleGreyscale-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleGreyscale-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SimpleGreyscale-tvOS/Pods-SimpleGreyscale-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		75D129B5EA8B4CC3790C3718 /* Pods-SimpleGreyscaleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SimpleGreyscaleTests.debug.xcconfig"; path = "Target Support Files/Pods-SimpleGreyscaleTests/Pods-SimpleGreyscaleTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -157,14 +149,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		50637141231A04AD00347395 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				50637145231A04AD00347395 /* libRNOpencv3.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		554880EF1004DC8AB211DD16 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,7 +167,6 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				50637140231A04AD00347395 /* RNOpencv3.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -336,12 +319,6 @@
 			mainGroup = 83CBB9F61A601CBA00E9B192;
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 50637141231A04AD00347395 /* Products */;
-					ProjectRef = 50637140231A04AD00347395 /* RNOpencv3.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				13B07F861A680F5B00A75B9A /* SimpleGreyscale */,
@@ -351,16 +328,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		50637145231A04AD00347395 /* libRNOpencv3.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNOpencv3.a;
-			remoteRef = 50637144231A04AD00347395 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		00E356EC1AD99517003FC87E /* Resources */ = {
