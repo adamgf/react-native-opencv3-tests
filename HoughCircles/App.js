@@ -33,7 +33,7 @@ export default class App extends Component {
   }
 	
   onPayload = async(e) => {
-	alert('Entered onPayload e is: ' + JSON.stringify(e))
+	//alert('Entered onPayload e is: ' + JSON.stringify(e))
     const circles = e.payload
 
   	let overlayMat
