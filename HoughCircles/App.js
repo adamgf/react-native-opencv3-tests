@@ -32,6 +32,14 @@ export default class App extends Component {
 	this.setState({ ...this.state, interMat: interMat, circlesMat: circlesMat })
   }
 	
+  componentWillUnmount = () => {
+	  const { overlayMat, interMat, circlesMat, subscription } = this.state
+	  RNCv.deleteMat(overlayMat)	
+	  RNCv.deleteMat(interMat)	
+	  RNCv.deleteMat(circlesMat)
+	  subscription.remove()	
+  }
+  
   onPayload = async(e) => {
 	//alert('Entered onPayload e is: ' + JSON.stringify(e))
     const circles = e.payload
@@ -44,8 +52,7 @@ export default class App extends Component {
   	  overlayMat = await new Mat(1280,1600,CvType.CV_8UC4).init()
   	} 
 	
-	overlayMat.setTo(new CvScalar(0,0,0,0))
-	
+	//overlayMat.setTo(new CvScalar(0,0,0,0))
 	const scalar1 = new CvScalar(255,0,255,255)
 	const scalar2 = new CvScalar(255,255,0,255)
 	
@@ -74,7 +81,7 @@ export default class App extends Component {
 	  }
 	  else if (interMat && circlesMat) {
   	  	return(
-      <CvInvoke func='HoughCircles' params={{"p1":interMat,"p2":circlesMat,"p3":3,"p4":2,"p5":320,"p6":200,"p7":100,"p8":1,"p9":130}} callback='onPayload'>
+      <CvInvoke func='HoughCircles' params={{"p1":interMat,"p2":circlesMat,"p3":3,"p4":2,"p5":100,"p6":100,"p7":90,"p8":1,"p9":130}} callback='onPayload'>
         <CvInvoke func='GaussianBlur' params={{"p1":interMat,"p2":interMat,"p3":gaussianKernelSize,"p4":2,"p5":2}}>
           <CvInvoke func='cvtColor' params={{"p1":"srcMat","p2":interMat,"p3":ColorConv.COLOR_BGR2GRAY}}>
             <CvImage
