@@ -66,7 +66,7 @@ export default class App extends Component {
 	this.setState({ ...this.state, overlayMat: overlayMat })	  
   }
   
-  renderHoughCircles = () => {
+  renderHoughCircles = (ogImage) => {
     const originalImagePath = './images/Billiard-balls-table.jpg'
 	const gaussianKernelSize = new CvSize(9, 9)
 	  const { interMat, circlesMat, overlayMat } = this.state
@@ -74,7 +74,7 @@ export default class App extends Component {
 	  	return(
           <CvImage
             style={{width: 200, height: 250}}
-            source={ require(`${originalImagePath}`) }
+            source={ ogImage }
 			overlay={overlayMat}
           />
 	  	)
@@ -86,7 +86,7 @@ export default class App extends Component {
           <CvInvoke func='cvtColor' params={{"p1":"srcMat","p2":interMat,"p3":ColorConv.COLOR_BGR2GRAY}}>
             <CvImage
               style={{width: 200, height: 250}}
-              source={ require(`${originalImagePath}`) }
+              source={ ogImage }
             />
           </CvInvoke>
         </CvInvoke>
@@ -97,7 +97,7 @@ export default class App extends Component {
 	  	return(
           <Image
             style={{width: 200, height: 250}}
-            source={ require(`${originalImagePath}`) }
+            source={ ogImage }
           />
 	  	)
 	  }
@@ -114,7 +114,7 @@ export default class App extends Component {
           source={ require(`${originalImagePath}`) }
         />
         <Text style={styles.captions}>Original</Text>
-		  {this.renderHoughCircles()}
+		  {this.renderHoughCircles( require(`${originalImagePath}`) )}
         <Text style={styles.captions}>Hough Circles</Text>
       </View>
     );
