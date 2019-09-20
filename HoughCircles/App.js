@@ -67,7 +67,6 @@ export default class App extends Component {
   }
   
   renderHoughCircles = (ogImage) => {
-    const originalImagePath = './images/Billiard-balls-table.jpg'
 	const gaussianKernelSize = new CvSize(9, 9)
 	  const { interMat, circlesMat, overlayMat } = this.state
 	  if (overlayMat) {
