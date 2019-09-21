@@ -60,6 +60,10 @@ export default class App extends Component {
 	RNCv.invokeMethod("addWeighted", {"p1":srcMat,"p2":1.0,"p3":overlayMat,"p4":1.0,"p5":0.0,"p6":srcMat})
 	const { uri, width, height } = await RNCv.matToImage(srcMat, newImagePath)
 	
+	RNCv.deleteMat(overlayMat)	
+	RNCv.deleteMat(interMat)	
+	RNCv.deleteMat(circlesMat)
+	
 	this.setState({ ...this.state, destImageUri: uri })
   }
 	  
