@@ -9,7 +9,7 @@
 
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
-import {CvImage, CvInvoke, ColorConv} from 'react-native-opencv3';
+import {CvImage, CvInvoke, ColorConv, Core} from 'react-native-opencv3';
 
 export default class App extends Component {
   render() {
@@ -23,7 +23,7 @@ export default class App extends Component {
         />
         <Text style={styles.captions}>Original</Text>
         <CvInvoke func='bitwise_not' params={{"p1":"dstMat","p2":"dstMat"}}>
-          <CvInvoke func='rotate' params={{"p1":"dstMat","p2":"dstMat","p3":2}}>
+          <CvInvoke func='rotate' params={{"p1":"dstMat","p2":"dstMat","p3":Core.ROTATE_90_COUNTERCLOCKWISE}}>
             <CvInvoke func='cvtColor' params={{"p1":"srcMat","p2":"dstMat","p3":ColorConv.COLOR_BGR2GRAY}}>
               <CvImage
                 style={{width: 200, height: 200}}
