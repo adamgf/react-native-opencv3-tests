@@ -1,6 +1,7 @@
 # react-native-opencv3-tests
 
-Sample react native apps that expose OpenCV functionality on both iOS and Android
+Sample react native apps that expose OpenCV functionality from https://github.com/adamgf/react-native-opencv3 
+on both iOS and Android.
 
 ## Build and run sample apps
 
