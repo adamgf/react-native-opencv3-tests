@@ -13,9 +13,6 @@ on both iOS and Android.
 
 `$ react-native run-android`
 
-The first time the camera apps are run they will not have required permissions so you will
-have to set the permissions and then re-run the app.
-
 ### iOS
 
 `$ cd ios`
@@ -27,6 +24,7 @@ Open generated workspace file in XCode.
 Set your team appropriately for the necessary targets.
 
 Build and run the app.
+
 
 
   
