@@ -666,6 +666,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.SimpleGreyscale;
 				PRODUCT_NAME = SimpleGreyscale;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -689,6 +690,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.SimpleGreyscale;
 				PRODUCT_NAME = SimpleGreyscale;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;

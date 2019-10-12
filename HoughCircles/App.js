@@ -11,7 +11,7 @@ import React, {Component} from 'react';
 import {DeviceEventEmitter, Platform, StyleSheet, Text, View, Image} from 'react-native';
 import {RNCv, Mat, CvType, CvSize, CvPoint, CvScalar, CvCamera, CvInvoke} from 'react-native-opencv3';
 
-export default class App extends Component {
+export default class App extends Component<Props> {
 
 	constructor(props) {
 	  super(props)
@@ -27,14 +27,14 @@ export default class App extends Component {
 	  		
 	this.setState({ ...this.state, interMat: interMat, circlesMat: circlesMat })
   }
-	
+	  
   componentWillUnmount = () => {
 	  const { overlayMat, interMat, circlesMat } = this.state
 	  RNCv.deleteMat(interMat)	
 	  RNCv.deleteMat(circlesMat)
 	  RNCv.deleteMat(overlayMat)	
   }
-  
+
   onFrameSize = async(e) => {
 	  if (!this.state.frameWidth && !this.state.frameHeight && !this.state.overlayMat) {		
       	const { frameWidth, frameHeight } = JSON.parse((Platform.OS === 'ios') ? e.nativeEvent.payload : e.payload).frameSize
@@ -97,7 +97,7 @@ export default class App extends Component {
 	  }
 	  else {
 	  	return(
-			<CvCamera style={styles.container}/>
+			<View/>
 	  	)
 	  }
   }

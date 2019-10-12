@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0079DAD9ED546A6DD3CD71F8 /* libPods-HoughCircles-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AE2A54469AC7517DEF750736 /* libPods-HoughCircles-tvOSTests.a */; };
 		00E356F31AD99517003FC87E /* HoughCirclesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HoughCirclesTests.m */; };
+		06D0BCF8790E9958723A860A /* libPods-HoughCircles-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C1DB4B5AAA6E9C5A4B3373A /* libPods-HoughCircles-tvOS.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -17,9 +17,9 @@
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* HoughCirclesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* HoughCirclesTests.m */; };
-		3C3BCFEAA1E4CA30B139F387 /* libPods-HoughCirclesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32B4DCB6EC655D75907EBE64 /* libPods-HoughCirclesTests.a */; };
-		D8783C242064042ED8BCD8AC /* libPods-HoughCircles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 15659B213775821A1C9D9C7F /* libPods-HoughCircles.a */; };
-		DA81869546750B838FA7BCB5 /* libPods-HoughCircles-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1DD27DFA3CD7A94DEF08FA /* libPods-HoughCircles-tvOS.a */; };
+		727513780BC1E0EAD6DD2784 /* libPods-HoughCircles.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B16EC2F30E0FA6CD05763027 /* libPods-HoughCircles.a */; };
+		87730C4E989AE8A378B5C421 /* libPods-HoughCircles-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E707914FA36E3AC10DBCCC54 /* libPods-HoughCircles-tvOSTests.a */; };
+		CBB2EE67203C6647DD457789 /* libPods-HoughCirclesTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2D4DFEAC64DEE0278E4635F /* libPods-HoughCirclesTests.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,22 +51,22 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = HoughCircles/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = HoughCircles/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = HoughCircles/main.m; sourceTree = "<group>"; };
-		15659B213775821A1C9D9C7F /* libPods-HoughCircles.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCircles.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		1B1DD27DFA3CD7A94DEF08FA /* libPods-HoughCircles-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCircles-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1D74D3DAA243442310C2C2CD /* Pods-HoughCirclesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCirclesTests.release.xcconfig"; path = "Target Support Files/Pods-HoughCirclesTests/Pods-HoughCirclesTests.release.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* HoughCircles-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "HoughCircles-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* HoughCircles-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "HoughCircles-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		32B4DCB6EC655D75907EBE64 /* libPods-HoughCirclesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCirclesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		389CEE8F5123FF7B32C9DACF /* Pods-HoughCircles-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOS/Pods-HoughCircles-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
-		4CBC450D86D5D4010C3B0433 /* Pods-HoughCircles-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOSTests/Pods-HoughCircles-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		611449E4472C71574C901762 /* Pods-HoughCirclesTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCirclesTests.release.xcconfig"; path = "Target Support Files/Pods-HoughCirclesTests/Pods-HoughCirclesTests.release.xcconfig"; sourceTree = "<group>"; };
-		7367FCD2F73951D522584E17 /* Pods-HoughCircles-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOS.release.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOS/Pods-HoughCircles-tvOS.release.xcconfig"; sourceTree = "<group>"; };
-		75D129B5EA8B4CC3790C3718 /* Pods-HoughCirclesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCirclesTests.debug.xcconfig"; path = "Target Support Files/Pods-HoughCirclesTests/Pods-HoughCirclesTests.debug.xcconfig"; sourceTree = "<group>"; };
-		866AD599F1D9535C770695B3 /* Pods-HoughCircles-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOSTests/Pods-HoughCircles-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
-		9D3ED29412526A286E701E31 /* Pods-HoughCircles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles.release.xcconfig"; path = "Target Support Files/Pods-HoughCircles/Pods-HoughCircles.release.xcconfig"; sourceTree = "<group>"; };
-		AC09C31317784557441F2991 /* Pods-HoughCircles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles.debug.xcconfig"; path = "Target Support Files/Pods-HoughCircles/Pods-HoughCircles.debug.xcconfig"; sourceTree = "<group>"; };
-		AE2A54469AC7517DEF750736 /* libPods-HoughCircles-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCircles-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		64516BFE9C1040414531068D /* Pods-HoughCircles-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOSTests/Pods-HoughCircles-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		75AABB423D60F21721E7F599 /* Pods-HoughCircles.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles.release.xcconfig"; path = "Target Support Files/Pods-HoughCircles/Pods-HoughCircles.release.xcconfig"; sourceTree = "<group>"; };
+		9033985608F262BCB193CBF5 /* Pods-HoughCircles-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOS.release.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOS/Pods-HoughCircles-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		9C1DB4B5AAA6E9C5A4B3373A /* libPods-HoughCircles-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCircles-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		ABCD9A66779802B10FD24ED3 /* Pods-HoughCirclesTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCirclesTests.debug.xcconfig"; path = "Target Support Files/Pods-HoughCirclesTests/Pods-HoughCirclesTests.debug.xcconfig"; sourceTree = "<group>"; };
+		B16EC2F30E0FA6CD05763027 /* libPods-HoughCircles.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCircles.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E707914FA36E3AC10DBCCC54 /* libPods-HoughCircles-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCircles-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
+		EFBFBDFC99D13C261FD14D30 /* Pods-HoughCircles-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOSTests/Pods-HoughCircles-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F185F67FDFEA0D9EA67AA41A /* Pods-HoughCircles.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles.debug.xcconfig"; path = "Target Support Files/Pods-HoughCircles/Pods-HoughCircles.debug.xcconfig"; sourceTree = "<group>"; };
+		F2D4DFEAC64DEE0278E4635F /* libPods-HoughCirclesTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HoughCirclesTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7CDCB386F2BA8C57D13EE0F /* Pods-HoughCircles-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HoughCircles-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-HoughCircles-tvOS/Pods-HoughCircles-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3C3BCFEAA1E4CA30B139F387 /* libPods-HoughCirclesTests.a in Frameworks */,
+				CBB2EE67203C6647DD457789 /* libPods-HoughCirclesTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,7 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D8783C242064042ED8BCD8AC /* libPods-HoughCircles.a in Frameworks */,
+				727513780BC1E0EAD6DD2784 /* libPods-HoughCircles.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -90,7 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA81869546750B838FA7BCB5 /* libPods-HoughCircles-tvOS.a in Frameworks */,
+				06D0BCF8790E9958723A860A /* libPods-HoughCircles-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0079DAD9ED546A6DD3CD71F8 /* libPods-HoughCircles-tvOSTests.a in Frameworks */,
+				87730C4E989AE8A378B5C421 /* libPods-HoughCircles-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,25 +141,25 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				15659B213775821A1C9D9C7F /* libPods-HoughCircles.a */,
-				1B1DD27DFA3CD7A94DEF08FA /* libPods-HoughCircles-tvOS.a */,
-				AE2A54469AC7517DEF750736 /* libPods-HoughCircles-tvOSTests.a */,
-				32B4DCB6EC655D75907EBE64 /* libPods-HoughCirclesTests.a */,
+				B16EC2F30E0FA6CD05763027 /* libPods-HoughCircles.a */,
+				9C1DB4B5AAA6E9C5A4B3373A /* libPods-HoughCircles-tvOS.a */,
+				E707914FA36E3AC10DBCCC54 /* libPods-HoughCircles-tvOSTests.a */,
+				F2D4DFEAC64DEE0278E4635F /* libPods-HoughCirclesTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		554880EF1004DC8AB211DD16 /* Pods */ = {
+		60B66BC68598460B3A2642C8 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				AC09C31317784557441F2991 /* Pods-HoughCircles.debug.xcconfig */,
-				9D3ED29412526A286E701E31 /* Pods-HoughCircles.release.xcconfig */,
-				389CEE8F5123FF7B32C9DACF /* Pods-HoughCircles-tvOS.debug.xcconfig */,
-				7367FCD2F73951D522584E17 /* Pods-HoughCircles-tvOS.release.xcconfig */,
-				866AD599F1D9535C770695B3 /* Pods-HoughCircles-tvOSTests.debug.xcconfig */,
-				4CBC450D86D5D4010C3B0433 /* Pods-HoughCircles-tvOSTests.release.xcconfig */,
-				75D129B5EA8B4CC3790C3718 /* Pods-HoughCirclesTests.debug.xcconfig */,
-				611449E4472C71574C901762 /* Pods-HoughCirclesTests.release.xcconfig */,
+				F185F67FDFEA0D9EA67AA41A /* Pods-HoughCircles.debug.xcconfig */,
+				75AABB423D60F21721E7F599 /* Pods-HoughCircles.release.xcconfig */,
+				F7CDCB386F2BA8C57D13EE0F /* Pods-HoughCircles-tvOS.debug.xcconfig */,
+				9033985608F262BCB193CBF5 /* Pods-HoughCircles-tvOS.release.xcconfig */,
+				EFBFBDFC99D13C261FD14D30 /* Pods-HoughCircles-tvOSTests.debug.xcconfig */,
+				64516BFE9C1040414531068D /* Pods-HoughCircles-tvOSTests.release.xcconfig */,
+				ABCD9A66779802B10FD24ED3 /* Pods-HoughCirclesTests.debug.xcconfig */,
+				1D74D3DAA243442310C2C2CD /* Pods-HoughCirclesTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 				00E356EF1AD99517003FC87E /* HoughCirclesTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
-				554880EF1004DC8AB211DD16 /* Pods */,
+				60B66BC68598460B3A2642C8 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "HoughCirclesTests" */;
 			buildPhases = (
-				41DDF6C997EB1E9B106CA68C /* [CP] Check Pods Manifest.lock */,
+				6AF2BD5864409B8A17279203 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
@@ -223,13 +223,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "HoughCircles" */;
 			buildPhases = (
-				E352F7A26A3EA93DF8F37D2A /* [CP] Check Pods Manifest.lock */,
+				8CC42EF75040AF4DA01FF276 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
-				CB81F38783246B9B1AB80001 /* [CP] Copy Pods Resources */,
+				03D803606FE6E459281F6CA8 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -244,7 +244,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HoughCircles-tvOS" */;
 			buildPhases = (
-				7945B61721327CB3E681F68D /* [CP] Check Pods Manifest.lock */,
+				16D5AA584F92090BD942F7BF /* [CP] Check Pods Manifest.lock */,
 				FD10A7F122414F3F0027D42C /* Start Packager */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
@@ -264,7 +264,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "HoughCircles-tvOSTests" */;
 			buildPhases = (
-				01BF86162B47B0EB7B94DAA4 /* [CP] Check Pods Manifest.lock */,
+				DC333BA7B068595D949B1892 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
 				2D02E48D1E0B4A5D006451C7 /* Frameworks */,
 				2D02E48E1E0B4A5D006451C7 /* Resources */,
@@ -378,65 +378,25 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
-		01BF86162B47B0EB7B94DAA4 /* [CP] Check Pods Manifest.lock */ = {
+		03D803606FE6E459281F6CA8 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+				"${PODS_ROOT}/Target Support Files/Pods-HoughCircles/Pods-HoughCircles-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/RNOpencv3/ocvdata.bundle",
 			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HoughCircles-tvOSTests-checkManifestLockResult.txt",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ocvdata.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HoughCircles/Pods-HoughCircles-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Bundle React Native Code And Images";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
-		};
-		41DDF6C997EB1E9B106CA68C /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-HoughCirclesTests-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7945B61721327CB3E681F68D /* [CP] Check Pods Manifest.lock */ = {
+		16D5AA584F92090BD942F7BF /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -458,25 +418,43 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		CB81F38783246B9B1AB80001 /* [CP] Copy Pods Resources */ = {
+		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-HoughCircles/Pods-HoughCircles-resources.sh",
-				"${PODS_CONFIGURATION_BUILD_DIR}/RNOpencv3/ocvdata.bundle",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "Bundle React Native Code And Images";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/ocvdata.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HoughCircles/Pods-HoughCircles-resources.sh\"\n";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		6AF2BD5864409B8A17279203 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HoughCirclesTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E352F7A26A3EA93DF8F37D2A /* [CP] Check Pods Manifest.lock */ = {
+		8CC42EF75040AF4DA01FF276 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -492,6 +470,28 @@
 			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-HoughCircles-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DC333BA7B068595D949B1892 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HoughCircles-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -603,7 +603,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 75D129B5EA8B4CC3790C3718 /* Pods-HoughCirclesTests.debug.xcconfig */;
+			baseConfigurationReference = ABCD9A66779802B10FD24ED3 /* Pods-HoughCirclesTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = KPVD84QZHR;
@@ -627,7 +627,7 @@
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 611449E4472C71574C901762 /* Pods-HoughCirclesTests.release.xcconfig */;
+			baseConfigurationReference = 1D74D3DAA243442310C2C2CD /* Pods-HoughCirclesTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -648,15 +648,12 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC09C31317784557441F2991 /* Pods-HoughCircles.debug.xcconfig */;
+			baseConfigurationReference = F185F67FDFEA0D9EA67AA41A /* Pods-HoughCircles.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
-				CLANG_CXX_LIBRARY = "compiler-default";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = KPVD84QZHR;
-				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = HoughCircles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -672,14 +669,11 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D3ED29412526A286E701E31 /* Pods-HoughCircles.release.xcconfig */;
+			baseConfigurationReference = 75AABB423D60F21721E7F599 /* Pods-HoughCircles.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CLANG_CXX_LANGUAGE_STANDARD = "c++17";
-				CLANG_CXX_LIBRARY = "compiler-default";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = KPVD84QZHR;
-				GCC_C_LANGUAGE_STANDARD = "compiler-default";
 				INFOPLIST_FILE = HoughCircles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -695,7 +689,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 389CEE8F5123FF7B32C9DACF /* Pods-HoughCircles-tvOS.debug.xcconfig */;
+			baseConfigurationReference = F7CDCB386F2BA8C57D13EE0F /* Pods-HoughCircles-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -723,7 +717,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7367FCD2F73951D522584E17 /* Pods-HoughCircles-tvOS.release.xcconfig */;
+			baseConfigurationReference = 9033985608F262BCB193CBF5 /* Pods-HoughCircles-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -751,7 +745,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 866AD599F1D9535C770695B3 /* Pods-HoughCircles-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = EFBFBDFC99D13C261FD14D30 /* Pods-HoughCircles-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -778,7 +772,7 @@
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4CBC450D86D5D4010C3B0433 /* Pods-HoughCircles-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 64516BFE9C1040414531068D /* Pods-HoughCircles-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
