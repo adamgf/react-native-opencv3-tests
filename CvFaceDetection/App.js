@@ -21,7 +21,7 @@ export default class App extends Component {
   }
 
   componentDidMount = () => {
-    DeviceEventEmitter.addListener('onFacesDetected', this.onFacesDetected);
+    DeviceEventEmitter.addListener('onFacesDetectedCv', this.onFacesDetectedCv);
   }
 
   switchFacing = (e) => {
