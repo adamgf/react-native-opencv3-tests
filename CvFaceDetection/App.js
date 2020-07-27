@@ -33,7 +33,7 @@ export default class App extends Component {
     }
   }
 
-  onFacesDetected = (e) => {
+  onFacesDetectedCv = (e) => {
     //alert('payload: ' + JSON.stringify(e.payload))
     if (Platform.OS === 'ios') {
       if ((!e.nativeEvent.payload && this.state.faces) || (e.nativeEvent.payload && !this.state.faces) || (e.nativeEvent.payload && this.state.faces)) {
@@ -161,7 +161,7 @@ export default class App extends Component {
           eyesClassifier='haarcascade_eye_tree_eyeglasses'
           noseClassifier='nose'
           mouthClassifier='mouth'
-          onFacesDetected={this.onFacesDetected}
+          onFacesDetectedCv={this.onFacesDetectedCv}
         />
         {this.renderFaceBoxes()}
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.switchFacing}>

@@ -1,6 +1,6 @@
 {
   "name": "CvFaceLandmarks",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "private": true,
   "scripts": {
     "start": "react-native start",
@@ -11,7 +11,7 @@
     "react": "16.8.6",
     "react-native": "0.60.5",
     "react-native-fs": "^2.14.1",
-    "react-native-opencv3": "^1.0.7"
+    "react-native-opencv3": "^1.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",

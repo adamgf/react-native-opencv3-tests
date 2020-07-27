@@ -33,7 +33,7 @@ export default class App extends Component {
     }
   }
 
-  onFacesDetected = (e) => {
+  onFacesDetectedCv = (e) => {
     //alert('payload: ' + JSON.stringify(e.payload))
     if (Platform.OS === 'ios') {
       if ((!e.nativeEvent.payload && this.state.faces) || (e.nativeEvent.payload && !this.state.faces) || (e.nativeEvent.payload && this.state.faces)) {
@@ -93,7 +93,7 @@ export default class App extends Component {
           facing={this.state.facing}
           faceClassifier='haarcascade_frontalface_alt2'
           landmarksModel='lbfmodel'
-          onFacesDetected={this.onFacesDetected}
+          onFacesDetectedCv={this.onFacesDetectedCv}
         />
         {this.renderLandmarks()}
         <TouchableOpacity style={Platform.OS === 'android' ? styles.androidButton : styles.iosButton} onPress={this.switchFacing}>

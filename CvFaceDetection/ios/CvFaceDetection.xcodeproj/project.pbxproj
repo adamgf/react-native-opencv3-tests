@@ -651,7 +651,7 @@
 			baseConfigurationReference = 89B4A3D96E393A7619B7B6D7 /* Pods-CvFaceDetection.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = KPVD84QZHR;
 				INFOPLIST_FILE = CvFaceDetection/Info.plist;
@@ -663,6 +663,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvFaceDetection;
 				PRODUCT_NAME = CvFaceDetection;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
@@ -672,7 +673,7 @@
 			baseConfigurationReference = ED0C9265EA4A5FD51A8D4EE7 /* Pods-CvFaceDetection.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = KPVD84QZHR;
 				INFOPLIST_FILE = CvFaceDetection/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -683,6 +684,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.adamfreeman.rnocv3.samples.CvFaceDetection;
 				PRODUCT_NAME = CvFaceDetection;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -697,6 +699,7 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -726,6 +729,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 4;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "CvFaceDetection-tvOS/Info.plist";
